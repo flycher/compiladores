@@ -3,12 +3,7 @@ grammar QPP;
 // Rules
 //TODO verificar se gramatica está correta
 programa
-    : lista_definicoes EOF
-    ;
-
-lista_definicoes
-    : lista_definicoes definicao # ListaDefinicoes
-    | definicao # ListaDefinicaoDefinicao
+    : definicao* EOF
     ;
 
 definicao
@@ -17,23 +12,13 @@ definicao
     ;
 
 estrutura
-    : STRUCT ID LBRACE lista_estrutura_corpo RBRACE SEMI
-    ;
-
-
-lista_estrutura_corpo
-    : lista_estrutura_corpo estrutura_acesso # ListaEstruturaCorpo_
-    | estrutura_acesso # ListaEstruturaCorpoEstruturaAcesso
+    : STRUCT ID LBRACE estrutura_acesso+ RBRACE SEMI
     ;
 
 estrutura_acesso
-    : PUBLIC COLON lista_estrutura_membros # EstruturaAcessoPublic
-    | PROTECTED COLON lista_estrutura_membros # EstruturaAcessoProtected
-    ;
-
-lista_estrutura_membros
-    : lista_estrutura_membros membro # ListaEstruturaMembros_
-    | membro # ListaEstruturaMembrosMembro
+    : PUBLIC COLON membro+ # EstruturaAcessoPublic
+    | PROTECTED COLON membro+ # EstruturaAcessoProtected
+    | PRIVATE COLON membro+ # EstruturaAcessoPrivate
     ;
 
 membro
@@ -45,11 +30,8 @@ membro
     ;
 
 variavel
-    : tipo ID SEMI
-    ;
-
-variavel_atribuicao
-    : tipo ID ATRIB expressao SEMI
+    : tipo ID SEMI # VariavelCriacao
+    | tipo ID atribuicao # VariavelAtribuicao
     ;
 
 construtor
@@ -69,45 +51,36 @@ funcao_cabecalho
     ;
 
 parametros_formais
-    : lista_parametros_formais
-    | 
-    ;
-
-lista_parametros_formais
-    : lista_parametros_formais COMMA tipo ID # ListaParametrosFormais_
-    | tipo ID # ListaParametrosFormaisTipo
+    : tipo ID ( COMMA tipo ID )* #ListaParametrosFormais
+    | # ParametrosFormaisVazio
     ;
 
 tipo
     : VOID # TipoVoid
     | qualificador INT decorador # TipoInt
+    | qualificador FLOAT decorador # TipoFloat
     | qualificador CHAR decorador # TipoChar
     | qualificador BOOL decorador # TipoBool
     | qualificador tipo_nome decorador # TipoNome
     ;
 
 tipo_nome
-    : tipo_nome DBLCOL ID # TipoNome_
+    : tipo_nome DBLCOL ID # TipoNomeAcesso
     | ID # TipoID
     ;
 
 qualificador
     : CONST # QualificadorConst
-    | # QualificadorEmpty
+    | # QualificadorVazio
     ;
 
 decorador
     : AMPER # DecoradorAmper
-    | # DecoradorEmpty
+    | # DecoradorVazio
     ;
 
 bloco
-    : LBRACE lista_declaracoes_locais lista_comandos RBRACE
-    ;
-
-lista_comandos
-    : lista_comandos comando # ListaComandos_
-    | comando #ListaComandosComandos
+    : LBRACE variavel* comando* RBRACE
     ;
 
 comando
@@ -123,16 +96,16 @@ comando
     ;
 
 selecao
-    : IF LPAREN expressao RPAREN lista_comandos selecao_senao
+    : IF LPAREN expressao RPAREN comando* selecao_senao
     ;
 
 selecao_senao
-    : ELSE lista_comandos # SelecaoSenao
-    | # SelecaoSenaoEmpty
+    : ELSE comando* # SelecaoSenao
+    | # SelecaoSenaoVazio
     ;
 
 repeticao
-    : WHILE LPAREN expressao RPAREN lista_comandos
+    : WHILE LPAREN expressao RPAREN comando*
     ;
 
 atribuicao
@@ -144,30 +117,11 @@ retorno
     ;
 
 entrada
-    : STDCIN lista_entrada_params SEMI
-    ;
-
-lista_entrada_params
-    : lista_entrada_params RSHIFT nome # ListaEntradaParams_
-    | nome # ListaEntradaParamsNome
-    | STDENDL # ListaEntradaParamsSTDENDL
+    : STDCIN ( RSHIFT nome | RSHIFT STDENDL)+ SEMI
     ;
 
 saida
-    : STDCOUT lista_saida_params SEMI
-    ;
-
-lista_saida_params
-    : lista_entrada_params LSHIFT expressao # ListaSaidaParams
-    | expressao # ListaSaidaParams
-    | STRL # ListaSaidaSTRL
-    | STDENDL # ListaSaidaParamsSTDENDL
-    ;
-
-lista_declaracoes_locais
-    : variavel # ListaDeclaracoesLocaisVariavel
-    | variavel_atribuicao # ListaDeclaracoesLocaisAtribuicao
-    | # ListaDeclaracoesLocaisEmpty
+    : STDCOUT (LSHIFT expressao | LSHIFT STDENDL)+ SEMI
     ;
 
 expressao_comando
@@ -176,13 +130,15 @@ expressao_comando
     ;
 
 expressao
-    : LPAREN expressao RPAREN # Expressao_
+    : LPAREN expressao RPAREN # ExpressaoLarenRparen
     | expressao operador_binario expressao # ExpressaoOperadorBinario
     | operador_unario expressao # ExpressaoUnario
     | nome LPAREN parametros_reais RPAREN # ExpressaoParametrosReais
-    | nome # ExpressaoNome2
+    | nome # ExpressaoNome
     | INTL # ExpressaoINTL
+    | FLOATL # ExpressaoFLOATL
     | CHARL # ExpressaoCHARL
+    | STRL #ExpressaoSTRL
     | TRUE # ExpressaoTrue
     | FALSE # ExpressaoFalse
     ;
@@ -210,57 +166,30 @@ operador_unario
     | NOT # OperadorUnarioNOT
     ;
 
-//nome
-//    : ID DBLCOL nome_lista
-//    | THIS ARROW nome_lista
-//    | nome_lista
-//    ;
-//
-//nome_lista
-//    : ID DOT nome_lista
-//    | nome LPAREN parâmetros_reais RPAREN DOT nome_lista
-//    | ID
-//    ;
-
 nome
-    : ID DBLCOL nome_lista # NomeID
-    | THIS ARROW nome_lista # NomeThisArrow
-    | nome_lista # NomeNomeLista
-    ;
-
-nome_lista
-    : ID DOT nome_lista nome_lista_ # NomeListaIDDOT
-    | ID DBLCOL nome_lista LPAREN lista_parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaID
-    | THIS ARROW nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaThisArrow
-    | ID nome_lista_ # NomeListaID
-    ;
-
-nome_lista_
-    : LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaLPAREN
-    | # NomeListaEmpty
+    : ID DBLCOL LPAREN parametros_reais RPAREN DOT nome # NomeDBLCOL
+    | THIS ARROW LPAREN parametros_reais RPAREN DOT nome # NomeArrow
+    | ID DOT nome # NomeDot
+    | ID nome # NomeID
+    | # NomeVazio
     ;
 
 parametros_reais
-    : lista_parametros_reais # ParametrosReaisLista
-    | # ParametrosReaisEmpty
-    ;
-
-lista_parametros_reais
-    : lista_parametros_reais COMMA expressao # ListaParametrosReais_
-    | expressao # ListaParametrosReaisExpressao
+    : expressao ( COMMA expressao)* # ParametrosReaisLista
+    | # ParametrosReaisVazio
     ;
 
 // Tokens
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
 fragment NUMBER: [0-9] ;
-fragment PONT: ('-' | '!' | ':' | ',' | '.' | '+' | '?' | '(' | ')' | '{' | '}' | '/') ;
 
 INTL: ('+' | '-')? NUMBER+ ;
+FLOATL: ('+' | '-')? NUMBER*'.'NUMBER+  ;
 CHARL: '\'' .? '\'' ;
 STRL: '"' .*? '"' ;
 
-//TODO precedencia
+//TODO unary minus
 LPAREN: '(' ;
 RPAREN: ')' ;
 LBRACE: '{' ;
@@ -301,12 +230,14 @@ BREAK: 'break' ;
 RETURN: 'return' ;
 STRUCT: 'struct' ;
 PUBLIC: 'public' ;
+PROTECTED: 'protected' ;
 PRIVATE: 'private' ;
 STATIC: 'static' ;
 THIS: 'this' ;
 CONST: 'const';
 VOID: 'void' ;
 INT: 'int' ;
+FLOAT: 'float' ;
 CHAR: 'char' ;
 BOOL: 'bool';
 TRUE: 'true' ;
