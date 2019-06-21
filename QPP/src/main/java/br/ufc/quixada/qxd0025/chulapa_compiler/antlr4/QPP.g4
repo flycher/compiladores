@@ -1,7 +1,7 @@
 grammar QPP;
 
 // Rules
-
+//TODO remover recursões
 programa
     : lista_definicoes EOF
     ;
@@ -213,7 +213,7 @@ expressao
     | LPAREN expressao RPAREN
     | expressao operador_binario expressao
     | operador_unario expressao
-    | nome LPAREN parâmetros_reais RPAREN
+    | nome LPAREN parametros_reais RPAREN
     | nome
     | INTL
     | CHARL
@@ -256,11 +256,11 @@ nome
 nome_lista
     :
     | ID DOT nome_lista
-    | nome LPAREN parâmetros_reais RPAREN DOT nome_lista
+    | nome LPAREN parametros_reais RPAREN DOT nome_lista
     | ID
     ;
 
-parâmetros_reais
+parametros_reais
     :
     | lista_parametros_reais
     | EMPTY
@@ -273,3 +273,69 @@ lista_parametros_reais
     ;
 
 // Tokens
+fragment LOWERCASE  : [a-z] ;
+fragment UPPERCASE  : [A-Z] ;
+fragment NUMBER: [0-9] ;
+fragment PONT: ('-' | '!' | ':' | ',' | '.' | '+' | '?' | '(' | ')' | '{' | '}' | '/') ;
+
+ID: (LOWERCASE | UPPERCASE)(LOWERCASE | UPPERCASE | NUMBER | '_')* ;
+INTL: ('+' | '-')? NUMBER ;
+
+//TODO aceitar tabela ASCII
+CHARL: '\'' (LOWERCASE | UPPERCASE | PONT) '\'' ;
+STRL: '"' (LOWERCASE | UPPERCASE | PONT)* '"' ;
+
+//TODO precedencia
+AND: '&&' ;
+OR: '||' ;
+PLUS: '+' ;
+MINUS: '-' ;
+TIMES: '*' ;
+DIV: '/' ;
+MOD: '%' ;
+LT: '<' ;
+LEQ: '<=' ;
+GT: '>' ;
+GEQ: '>=' ;
+EQ: '==' ;
+NEQ: '!=' ;
+INCR: '++' ;
+DECR: '--' ;
+NOT: '!' ;
+
+IF: 'if' ;
+ELSE: 'else' ;
+WHILE: 'while' ;
+BREAK: 'break' ;
+RETURN: 'return' ;
+STRUCT: 'struct' ;
+PUBLIC: 'public' ;
+PRIVATE: 'private' ;
+STATIC: 'static' ;
+THIS: 'this' ;
+CONST: 'const';
+VOID: 'void' ;
+INT: 'int' ;
+CHAR: 'char' ;
+BOOL: 'bool';
+TRUE: 'true' ;
+FALSE: 'false';
+
+LPAREN: '(' ;
+RPAREN: ')' ;
+LBRACE: '{' ;
+RBRACE: '}' ;
+COMMA: ',' ;
+COLON: ':' ;
+SEMI: ';' ;
+AMPER: '&' ;
+LSHIFT: '<<' ;
+RSHIFT: '>>' ;
+STDCIN: 'std::cin' ;
+STDCOUT: 'std::cout' ;
+STDENDL: 'std::endl' ;
+
+DIR: '#' ~[\r\n]* -> skip ;
+COMMENTBLOCK: '/*' .*? '*/' -> skip ;
+COMMENTLINE: '//' ~[\r\n]*  -> skip ;
+WHITESPACE: [ \r\n\t]+ -> skip ;
