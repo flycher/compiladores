@@ -3,30 +3,45 @@ grammar QPP;
 // Rules
 //TODO verificar se gramatica está correta
 programa
-    : definicao* EOF
+    : lista_definicoes EOF
+    ;
+
+lista_definicoes
+    : lista_definicoes definicao # ListaDefinicoes
+    | definicao # ListaDefinicaoDefinicao
     ;
 
 definicao
-    : funcao        #DefinicaoFuncao
-    | estrutura     #DefinicaoEstrutura
+    : funcao # DefinicaoFuncao
+    | estrutura # DefinicaoEstrutura
     ;
 
 estrutura
-    : STRUCT ID LBRACE estrutura_acesso* RBRACE SEMI
+    : STRUCT ID LBRACE lista_estrutura_corpo RBRACE SEMI
+    ;
+
+
+lista_estrutura_corpo
+    : lista_estrutura_corpo estrutura_acesso # ListaEstruturaCorpo_
+    | estrutura_acesso # ListaEstruturaCorpoEstruturaAcesso
     ;
 
 estrutura_acesso
-    : PUBLIC COLON membro*          #EstruturaPublica
-    | PRIVATE COLON membro*         #EstruturaPrivada
-    | PROTECTED COLON membro*       #EstruturaProtegida
+    : PUBLIC COLON lista_estrutura_membros # EstruturaAcessoPublic
+    | PROTECTED COLON lista_estrutura_membros # EstruturaAcessoProtected
+    ;
+
+lista_estrutura_membros
+    : lista_estrutura_membros membro # ListaEstruturaMembros_
+    | membro # ListaEstruturaMembrosMembro
     ;
 
 membro
-    : construtor        #MembroConstrutor
-    | variavel          #MembroVariavel
-    | metodo            #MembroMetodo
-    | STATIC variavel   #MembroStaticVariavel
-    | STATIC metodo     #MembroStaticMetodo
+    : construtor # MembroConstrutor
+    | variavel # MembroVariavel
+    | metodo # MembroMetodo
+    | STATIC variavel # MembroStaticVariavel
+    | STATIC metodo # MembroStaticMetodo
     ;
 
 variavel
@@ -42,7 +57,7 @@ construtor
     ;
 
 metodo
-    : qualificador funcao
+    : funcao_cabecalho qualificador bloco
     ;
 
 funcao
@@ -54,55 +69,70 @@ funcao_cabecalho
     ;
 
 parametros_formais
-    : tipo ID (COMA tipo ID)*       #ParametrosFormaisID
-    |                               #ParametrosFormaisVazio
+    : lista_parametros_formais
+    | 
+    ;
+
+lista_parametros_formais
+    : lista_parametros_formais COMMA tipo ID # ListaParametrosFormais_
+    | tipo ID # ListaParametrosFormaisTipo
     ;
 
 tipo
-    : VOID                                  #TipoVoid
-    | qualificador INT decorador            #TipoChar
-    | qualificador CHAR decorador           #TipoInt
-    | qualificador BOOL decorador           #TipoBool
-    | qualificador tipo_nome decorador      #TipoNome
+    : VOID # TipoVoid
+    | qualificador INT decorador # TipoInt
+    | qualificador CHAR decorador # TipoChar
+    | qualificador BOOL decorador # TipoBool
+    | qualificador tipo_nome decorador # TipoNome
     ;
 
 tipo_nome
-    : tipo_nome DBCOL ID        #TipoNomeAcesso
-    | ID                        #TipoNomeId
+    : tipo_nome DBLCOL ID # TipoNome_
+    | ID # TipoID
     ;
 
 qualificador
-    : CONST             #QualificadorConst
-    |                   #QualificadorVazio
+    : CONST # QualificadorConst
+    | # QualificadorEmpty
     ;
 
 decorador
-    : AMPER             #DecoradorAmper
-    |                   #DecoradorVazio
+    : AMPER # DecoradorAmper
+    | # DecoradorEmpty
     ;
 
 bloco
-    : LBRACE declaracoes_locais comando* RBRACE
+    : LBRACE lista_declaracoes_locais lista_comandos RBRACE
+    ;
+
+lista_comandos
+    : lista_comandos comando # ListaComandos_
+    | comando #ListaComandosComandos
     ;
 
 comando
-    : bloco                     #ComandoBloco
-    | selecao                   #ComandoSelecao
-    | repeticao                 #ComandoRepeticao
-    | atribuicao                #ComandoAtribuicao
-    | retorno                   #ComandoRetorno
-    | entrada                   #ComandoEntrada
-    | saida                     #ComandoSaida
-    | expressao_comando         #ComandoExpressao
-    | BREAK SEMI                #ComandoBreak
+    : bloco # ComandoBloco
+    | selecao # ComadoSelecao
+    | repeticao # ComadoRepeticao
+    | atribuicao # ComandoAtribuicao
+    | retorno # ComandoRetorno
+    | entrada # ComandoEntrada
+    | saida # ComandoSaida
+    | expressao_comando # ComandoExpressaoComando
+    | BREAK SEMI # ComandoBreak
     ;
 
 selecao
-    : IF LPAREN expressao RPAREN comando* (ELSE comando*)?
+    : IF LPAREN expressao RPAREN lista_comandos selecao_senao
+    ;
+
+selecao_senao
+    : ELSE lista_comandos # SelecaoSenao
+    | # SelecaoSenaoEmpty
     ;
 
 repeticao
-    : WHILE LPAREN expressao RPAREN comando*
+    : WHILE LPAREN expressao RPAREN lista_comandos
     ;
 
 atribuicao
@@ -114,67 +144,110 @@ retorno
     ;
 
 entrada
-    : STDCIN (RSHIFT (nome | STDENDL))+ SEMI
+    : STDCIN lista_entrada_params SEMI
+    ;
+
+lista_entrada_params
+    : lista_entrada_params RSHIFT nome # ListaEntradaParams_
+    | nome # ListaEntradaParamsNome
+    | STDENDL # ListaEntradaParamsSTDENDL
     ;
 
 saida
-    : STDCOUT (LSHIFT (expressao | STRL | STDENDL))+ SEMI
+    : STDCOUT lista_saida_params SEMI
     ;
 
-declaracoes_locais
-    : variavel                  #DeclaracaoLocalVariavel
-    | variavel_atribuicao       #DeclaracaoLocalAtribuicao
-    |                           #DeclaracaoLocalVazia
+lista_saida_params
+    : lista_entrada_params LSHIFT expressao # ListaSaidaParams
+    | expressao # ListaSaidaParams
+    | STRL # ListaSaidaSTRL
+    | STDENDL # ListaSaidaParamsSTDENDL
+    ;
+
+lista_declaracoes_locais
+    : variavel # ListaDeclaracoesLocaisVariavel
+    | variavel_atribuicao # ListaDeclaracoesLocaisAtribuicao
+    | # ListaDeclaracoesLocaisEmpty
     ;
 
 expressao_comando
-    : expressao SEMI            #ExpressaoComandoExpressao
-    | SEMI                      #ExpressaoComandoSemi
+    : expressao SEMI # ExpressaoComandoExpressao
+    | SEMI # ExpressaoComandoSEMI
     ;
 
 expressao
-    : LPAREN expressao RPAREN                           #ExpressaoParens
-    | expressao operador_binario expressao              #ExpressaoBinario
-    | <assoc=right> operador_unario expressao           #ExpressaoUnario
-    | nome LPAREN parametros_reais RPAREN               #ExpressaoReais
-    | nome                                              #ExpressaoNome
-    | INTL                                              #ExpressaoIntl
-    | CHARL                                             #ExpressaoCharl
-    | TRUE                                              #ExpressaoTrue
-    | FALSE                                             #ExpressaoFalse
+    : LPAREN expressao RPAREN # Expressao_
+    | expressao operador_binario expressao # ExpressaoOperadorBinario
+    | operador_unario expressao # ExpressaoUnario
+    | nome LPAREN parametros_reais RPAREN # ExpressaoParametrosReais
+    | nome # ExpressaoNome2
+    | INTL # ExpressaoINTL
+    | CHARL # ExpressaoCHARL
+    | TRUE # ExpressaoTrue
+    | FALSE # ExpressaoFalse
     ;
 
 operador_binario
-    : AND           #BinarioAnd
-    | OR            #BinarioOr
-    | PLUS          #BinarioPlus
-    | MINUS         #BinarioMinus
-    | TIMES         #BinarioTimes
-    | DIV           #BinarioDiv
-    | MOD           #BinarioMod
-    | LT            #BinarioLess
-    | LEQ           #BinarioLessEqual
-    | GT            #BinarioGreater
-    | GEQ           #BinarioGreaterEqual
-    | EQ            #BinarioEqual
-    | NEQ           #BinarioNotEqual
+    : AND # OperadorBinarioAND
+    | OR # OperadorBinarioOR
+    | PLUS # OperadorBinarioPLUS
+    | MINUS # OperadorBinarioMINUS
+    | TIMES # OperadorBinarioTIMES
+    | DIV # OperadorBinarioDIV
+    | MOD # OperadorBinarioMOD
+    | LT # OperadorBinarioLT
+    | LEQ # OperadorBinarioLEQ
+    | GT # OperadorGT
+    | GEQ # OperadorGEQ
+    | EQ # OperadorEQ
+    | NEQ # OperadorNEQ
     ;
 
 operador_unario
-    : INCR          #UnarioIncrement
-    | DECR          #UnarioDecrement
-    | MINUS         #UnarioMinus
-    | PLUS          #UnarioPlus
-    | NOT           #UnarioNot
+    : INCR # OperadorUnarioINCR
+    | DECR # OperadorUnarioDECR
+    | UNARYMINUS # OperadorUnarioUNARYMINUS
+    | NOT # OperadorUnarioNOT
     ;
 
+//nome
+//    : ID DBLCOL nome_lista
+//    | THIS ARROW nome_lista
+//    | nome_lista
+//    ;
+//
+//nome_lista
+//    : ID DOT nome_lista
+//    | nome LPAREN parâmetros_reais RPAREN DOT nome_lista
+//    | ID
+//    ;
+
 nome
-    : (ID DBLCOL | THIS ARROW)? (ID DOT | ID DBLCOL | THIS ARROW | LPAREN parametros_reais RPAREN DOT | ID)*
+    : ID DBLCOL nome_lista # NomeID
+    | THIS ARROW nome_lista # NomeThisArrow
+    | nome_lista # NomeNomeLista
+    ;
+
+nome_lista
+    : ID DOT nome_lista nome_lista_ # NomeListaIDDOT
+    | ID DBLCOL nome_lista LPAREN lista_parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaID
+    | THIS ARROW nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaThisArrow
+    | ID nome_lista_ # NomeListaID
+    ;
+
+nome_lista_
+    : LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaLPAREN
+    | # NomeListaEmpty
     ;
 
 parametros_reais
-    : expressao (COMMA expressao)*      #ParametrosReaisExpressao
-    |                                   #ParametrosReaisVazio
+    : lista_parametros_reais # ParametrosReaisLista
+    | # ParametrosReaisEmpty
+    ;
+
+lista_parametros_reais
+    : lista_parametros_reais COMMA expressao # ListaParametrosReais_
+    | expressao # ListaParametrosReaisExpressao
     ;
 
 // Tokens
@@ -183,30 +256,43 @@ fragment UPPERCASE  : [A-Z] ;
 fragment NUMBER: [0-9] ;
 fragment PONT: ('-' | '!' | ':' | ',' | '.' | '+' | '?' | '(' | ')' | '{' | '}' | '/') ;
 
-ID: (LOWERCASE | UPPERCASE)(LOWERCASE | UPPERCASE | NUMBER | '_')* ;
-INTL: ('+' | '-')? NUMBER ;
-
-//TODO aceitar tabela ASCII
-CHARL: '\'' (LOWERCASE | UPPERCASE | PONT) '\'' ;
-STRL: '"' (LOWERCASE | UPPERCASE | PONT)* '"' ;
+INTL: ('+' | '-')? NUMBER+ ;
+CHARL: '\'' .? '\'' ;
+STRL: '"' .*? '"' ;
 
 //TODO precedencia
-AND: '&&' ;
-OR: '||' ;
-PLUS: '+' ;
-MINUS: '-' ;
-TIMES: '*' ;
-DIV: '/' ;
-MOD: '%' ;
-LT: '<' ;
-LEQ: '<=' ;
-GT: '>' ;
-GEQ: '>=' ;
-EQ: '==' ;
-NEQ: '!=' ;
+LPAREN: '(' ;
+RPAREN: ')' ;
+LBRACE: '{' ;
+RBRACE: '}' ;
+ARROW: '->' ;
+DOT: '.' ;
+
+UNARYMINUS: '-' ;
 INCR: '++' ;
 DECR: '--' ;
 NOT: '!' ;
+AMPER: '&' ;
+
+DIV: '/' ;
+TIMES: '*' ;
+MOD: '%' ;
+
+PLUS: '+' ;
+MINUS: '-' ;
+
+LT: '<' ;
+GT: '>' ;
+LEQ: '<=' ;
+GEQ: '>=' ;
+
+NEQ: '!=' ;
+EQ: '==' ;
+
+AND: '&&' ;
+OR: '||' ;
+
+ATRIB: '=' ;
 
 IF: 'if' ;
 ELSE: 'else' ;
@@ -226,19 +312,17 @@ BOOL: 'bool';
 TRUE: 'true' ;
 FALSE: 'false';
 
-LPAREN: '(' ;
-RPAREN: ')' ;
-LBRACE: '{' ;
-RBRACE: '}' ;
 COMMA: ',' ;
 COLON: ':' ;
 SEMI: ';' ;
-AMPER: '&' ;
+DBLCOL: '::' ;
 LSHIFT: '<<' ;
 RSHIFT: '>>' ;
 STDCIN: 'std::cin' ;
 STDCOUT: 'std::cout' ;
 STDENDL: 'std::endl' ;
+
+ID: (LOWERCASE | UPPERCASE)(LOWERCASE | UPPERCASE | NUMBER | '_')* ;
 
 DIR: '#' ~[\r\n]* -> skip ;
 COMMENTBLOCK: '/*' .*? '*/' -> skip ;

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed30ccb4-d035-4ed3-ac47-ea0d6b6af6c6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+            <state relative-caret-position="140">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -57,6 +58,12 @@
       <find>lista_declaracoes_locais</find>
       <find>declaracoes_locais</find>
       <find>formais</find>
+      <find>EMPTY</find>
+      <find>parametros_reais</find>
+      <find>parâmetro</find>
+      <find>ATR</find>
+      <find>INTL</find>
+      <find>ListaDeclaracoesLocaisVariavel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,7 +85,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="width" value="959" />
     <option name="height" value="1054" />
   </component>
@@ -87,47 +94,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="chulapa_compiler" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4::/auto-gen" value="false" />
@@ -142,6 +109,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="DockerRegistry" />
   </component>
   <component name="RunDashboard">
@@ -172,15 +140,16 @@
       <workItem from="1561044114468" duration="7000" />
       <workItem from="1561075661526" duration="21000" />
       <workItem from="1561113909577" duration="3668000" />
-      <workItem from="1561117655685" duration="3125000" />
+      <workItem from="1561117655685" duration="3250000" />
+      <workItem from="1561133789477" duration="7607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10286000" />
+    <option name="totallyTimeSpent" value="18018000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1055" extended-state="6" />
+    <frame x="0" y="0" width="959" height="1054" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.42935377" />
@@ -226,12 +195,12 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
         </state>
       </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -242,8 +211,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        <state relative-caret-position="140">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
