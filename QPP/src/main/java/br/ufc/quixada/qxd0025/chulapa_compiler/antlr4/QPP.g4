@@ -1,7 +1,6 @@
 grammar QPP;
 
 // Rules
-//TODO verificar se gramatica está correta
 programa
     : definicao* EOF
     ;
@@ -131,8 +130,8 @@ expressao_comando
 
 expressao
     : LPAREN expressao RPAREN # ExpressaoLarenRparen
+    | <assoc=right>operador_unario expressao # ExpressaoUnario
     | expressao operador_binario expressao # ExpressaoOperadorBinario
-    | operador_unario expressao # ExpressaoUnario
     | nome LPAREN parametros_reais RPAREN # ExpressaoParametrosReais
     | nome # ExpressaoNome
     | INTL # ExpressaoINTL
@@ -160,18 +159,28 @@ operador_binario
     ;
 
 operador_unario
-    : INCR # OperadorUnarioINCR
+    : MINUS # OperadorUnarioUNARYMINUS
+    | INCR # OperadorUnarioINCR
     | DECR # OperadorUnarioDECR
-    | UNARYMINUS # OperadorUnarioUNARYMINUS
     | NOT # OperadorUnarioNOT
     ;
 
 nome
-    : ID DBLCOL LPAREN parametros_reais RPAREN DOT nome # NomeDBLCOL
-    | THIS ARROW LPAREN parametros_reais RPAREN DOT nome # NomeArrow
-    | ID DOT nome # NomeDot
-    | ID nome # NomeID
-    | # NomeVazio
+    : ID DBLCOL nome_lista # NomeID
+    | THIS ARROW nome_lista # NomeThisArrow
+    | nome_lista # NomeNomeLista
+    ;
+
+nome_lista
+    : ID DOT nome_lista nome_lista_ # NomeListaIDDOT
+    | ID DBLCOL nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaID
+    | THIS ARROW nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaThisArrow
+    | ID nome_lista_ # NomeListaID
+    ;
+
+nome_lista_
+    : LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaLPAREN
+    | # NomeListaEmpty
     ;
 
 parametros_reais
@@ -184,12 +193,11 @@ fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
 fragment NUMBER: [0-9] ;
 
-INTL: ('+' | '-')? NUMBER+ ;
-FLOATL: ('+' | '-')? NUMBER*'.'NUMBER+  ;
+INTL: NUMBER+ ;
+FLOATL: NUMBER*'.'NUMBER+  ;
 CHARL: '\'' .? '\'' ;
 STRL: '"' .*? '"' ;
 
-//TODO unary minus
 LPAREN: '(' ;
 RPAREN: ')' ;
 LBRACE: '{' ;
@@ -197,7 +205,6 @@ RBRACE: '}' ;
 ARROW: '->' ;
 DOT: '.' ;
 
-UNARYMINUS: '-' ;
 INCR: '++' ;
 DECR: '--' ;
 NOT: '!' ;
