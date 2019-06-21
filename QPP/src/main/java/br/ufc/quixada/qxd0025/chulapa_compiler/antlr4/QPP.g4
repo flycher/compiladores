@@ -1,275 +1,180 @@
 grammar QPP;
 
 // Rules
-//TODO remover recursões
+//TODO verificar se gramatica está correta
 programa
-    : lista_definicoes EOF
-    ;
-
-lista_definicoes
-    :
-    | lista_definicoes definicao
-    | definicao
+    : definicao* EOF
     ;
 
 definicao
-    :
-    | funcao
-    | estrutura
+    : funcao        #DefinicaoFuncao
+    | estrutura     #DefinicaoEstrutura
     ;
 
 estrutura
-    :
-    | STRUCT ID LBRACE lista_estrutura_corpo RBRACE SEMI
-    ;
-
-
-lista_estrutura_corpo
-    :
-    | lista_estrutura_corpo estrutura_acesso
-    | estrutura_acesso
+    : STRUCT ID LBRACE estrutura_acesso* RBRACE SEMI
     ;
 
 estrutura_acesso
-    :
-    | PUBLIC COLON lista_estrutura_membros
-    | PROTECTED COLON lista_estrutura_membros
-    ;
-
-lista_estrutura_membros
-    :
-    | lista_estrutura_membros membro
-    | membro
+    : PUBLIC COLON membro*          #EstruturaPublica
+    | PRIVATE COLON membro*         #EstruturaPrivada
+    | PROTECTED COLON membro*       #EstruturaProtegida
     ;
 
 membro
-    :
-    | construtor
-    | variavel
-    | metodo
-    | STATIC variavel
-    | STATIC metodo
+    : construtor        #MembroConstrutor
+    | variavel          #MembroVariavel
+    | metodo            #MembroMetodo
+    | STATIC variavel   #MembroStaticVariavel
+    | STATIC metodo     #MembroStaticMetodo
     ;
 
 variavel
-    :
-    | tipo ID SEMI
+    : tipo ID SEMI
     ;
 
 variavel_atribuicao
-    :
-    | tipo ID ATRIB expressao SEMI
+    : tipo ID ATRIB expressao SEMI
     ;
 
 construtor
-    :
-    | ID LPAREN parametros_formais RPAREN bloco
+    : ID LPAREN parametros_formais RPAREN bloco
     ;
 
 metodo
-    :
-    | funcao_cabecalho qualificador bloco
+    : qualificador funcao
     ;
 
 funcao
-    :
-    | funcao_cabecalho bloco
+    : funcao_cabecalho bloco
     ;
 
 funcao_cabecalho
-    :
-    | tipo ID LPAREN parametros_formais RPAREN
+    : tipo ID LPAREN parametros_formais RPAREN
     ;
 
 parametros_formais
-    :
-    | lista_parametros_formais
-    | EMPTY
-    ;
-
-lista_parametros_formais
-    :
-    | lista_parametros_formais COMMA tipo ID
-    | tipo ID
+    : tipo ID (COMA tipo ID)*       #ParametrosFormaisID
+    |                               #ParametrosFormaisVazio
     ;
 
 tipo
-    :
-    | VOID
-    | qualificador INT decorador
-    | qualificador CHAR decorador
-    | qualificador BOOL decorador
-    | qualificador tipo_nome decorador
+    : VOID                                  #TipoVoid
+    | qualificador INT decorador            #TipoChar
+    | qualificador CHAR decorador           #TipoInt
+    | qualificador BOOL decorador           #TipoBool
+    | qualificador tipo_nome decorador      #TipoNome
     ;
 
 tipo_nome
-    :
-    | tipo_nome DBCOL ID
-    | ID
+    : tipo_nome DBCOL ID        #TipoNomeAcesso
+    | ID                        #TipoNomeId
     ;
 
 qualificador
-    :
-    | CONST
-    | EMPTY
+    : CONST             #QualificadorConst
+    |                   #QualificadorVazio
     ;
 
 decorador
-    :
-    | AMPER
-    | EMPTY
+    : AMPER             #DecoradorAmper
+    |                   #DecoradorVazio
     ;
 
 bloco
-    :
-    | LBRACE lista_declaracoes_locais lista_comandos RBRACE
-    ;
-
-lista_comandos
-    :
-    | lista_comandos comando
-    | comando
+    : LBRACE declaracoes_locais comando* RBRACE
     ;
 
 comando
-    :
-    | bloco
-    | selecao
-    | repeticao
-    | atribuicao
-    | retorno
-    | entrada
-    | saida
-    | expressao_comando
-    | BREAK SEMI
+    : bloco                     #ComandoBloco
+    | selecao                   #ComandoSelecao
+    | repeticao                 #ComandoRepeticao
+    | atribuicao                #ComandoAtribuicao
+    | retorno                   #ComandoRetorno
+    | entrada                   #ComandoEntrada
+    | saida                     #ComandoSaida
+    | expressao_comando         #ComandoExpressao
+    | BREAK SEMI                #ComandoBreak
     ;
 
 selecao
-    :
-    | IF LPAREN expressao RPAREN lista_comandos selecao_senao
-    ;
-
-selecao_senao
-    :
-    | ELSE lista_comandos
-    | EMPTY
+    : IF LPAREN expressao RPAREN comando* (ELSE comando*)?
     ;
 
 repeticao
-    :
-    | WHILE LPAREN expressao RPAREN lista_comandos
+    : WHILE LPAREN expressao RPAREN comando*
     ;
 
 atribuicao
-    :
-    | nome ATRIB expressao SEMI
+    : nome ATRIB expressao SEMI
     ;
 
 retorno
-    :
-    | RETURN expressao_comando
+    : RETURN expressao_comando
     ;
 
 entrada
-    :
-    | STDCIN lista_entrada_params SEMI
-    ;
-
-lista_entrada_params
-    :
-    | lista_entrada_params RSHIFT nome
-    | nome
-    | STDENDL
+    : STDCIN (RSHIFT (nome | STDENDL))+ SEMI
     ;
 
 saida
-    :
-    | STDCOUT lista_saida_params SEMI
+    : STDCOUT (LSHIFT (expressao | STRL | STDENDL))+ SEMI
     ;
 
-lista_saida_params
-    :
-    | lista_entrada_params LSHIFT expressao
-    | expressao
-    | STRL
-    | STDENDL
-    ;
-
-lista_declaracoes_locais
-    :
-    | variavel
-    | variavel_atribuicao
-    | EMPTY
+declaracoes_locais
+    : variavel                  #DeclaracaoLocalVariavel
+    | variavel_atribuicao       #DeclaracaoLocalAtribuicao
+    |                           #DeclaracaoLocalVazia
     ;
 
 expressao_comando
-    :
-    | expressao SEMI
-    | SEMI
+    : expressao SEMI            #ExpressaoComandoExpressao
+    | SEMI                      #ExpressaoComandoSemi
     ;
 
 expressao
-    :
-    | LPAREN expressao RPAREN
-    | expressao operador_binario expressao
-    | operador_unario expressao
-    | nome LPAREN parametros_reais RPAREN
-    | nome
-    | INTL
-    | CHARL
-    | TRUE
-    | FALSE
+    : LPAREN expressao RPAREN                           #ExpressaoParens
+    | expressao operador_binario expressao              #ExpressaoBinario
+    | <assoc=right> operador_unario expressao           #ExpressaoUnario
+    | nome LPAREN parametros_reais RPAREN               #ExpressaoReais
+    | nome                                              #ExpressaoNome
+    | INTL                                              #ExpressaoIntl
+    | CHARL                                             #ExpressaoCharl
+    | TRUE                                              #ExpressaoTrue
+    | FALSE                                             #ExpressaoFalse
     ;
 
 operador_binario
-    :
-    | AND
-    | OR
-    | PLUS
-    | MINUS
-    | TIMES
-    | DIV
-    | MOD
-    | LT
-    | LEQ
-    | GT
-    | GEQ
-    | EQ
-    | NEQ
+    : AND           #BinarioAnd
+    | OR            #BinarioOr
+    | PLUS          #BinarioPlus
+    | MINUS         #BinarioMinus
+    | TIMES         #BinarioTimes
+    | DIV           #BinarioDiv
+    | MOD           #BinarioMod
+    | LT            #BinarioLess
+    | LEQ           #BinarioLessEqual
+    | GT            #BinarioGreater
+    | GEQ           #BinarioGreaterEqual
+    | EQ            #BinarioEqual
+    | NEQ           #BinarioNotEqual
     ;
 
 operador_unario
-    :
-    | INCR
-    | DECR
-    | MINUS
-    | NOT
+    : INCR          #UnarioIncrement
+    | DECR          #UnarioDecrement
+    | MINUS         #UnarioMinus
+    | PLUS          #UnarioPlus
+    | NOT           #UnarioNot
     ;
 
 nome
-    :
-    | ID DBLCOL nome_lista
-    | THIS ARROW nome_lista
-    | nome_lista
-    ;
-
-nome_lista
-    :
-    | ID DOT nome_lista
-    | nome LPAREN parametros_reais RPAREN DOT nome_lista
-    | ID
+    : (ID DBLCOL | THIS ARROW)? (ID DOT | ID DBLCOL | THIS ARROW | LPAREN parametros_reais RPAREN DOT | ID)*
     ;
 
 parametros_reais
-    :
-    | lista_parametros_reais
-    | EMPTY
-    ;
-
-lista_parametros_reais
-    :
-    | lista_parametros_reais COMMA expressao
-    | expressao
+    : expressao (COMMA expressao)*      #ParametrosReaisExpressao
+    |                                   #ParametrosReaisVazio
     ;
 
 // Tokens
