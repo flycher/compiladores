@@ -16,7 +16,7 @@ public class Main {
 
         try {
 
-            QPPLexer lexer = new QPPLexer(CharStreams.fromFileName("/home/chsevero/Desktop/Trabalho_Final_Compiladores/compiladores/QPP/test_files/test1.qpp"));
+            QPPLexer lexer = new QPPLexer(CharStreams.fromFileName("/home/flycher/Dropbox/VScode/compiladores/QPP/test_files/test1.qpp"));
             QPPParser parser = new QPPParser(new CommonTokenStream(lexer));
 
             QPPParser.ProgramaContext ctx = parser.programa();

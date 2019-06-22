@@ -102,54 +102,71 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         return super.visitMetodo(ctx);
     }
 
-    @Override
-    public TreeNode visitFuncao(QPPParser.FuncaoContext ctx) {
-        return super.visitFuncao(ctx);
-    }
+//    @Override
+//    public TreeNode visitFuncao(QPPParser.FuncaoContext ctx) {
+//        return super.visitFuncao(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitFuncao_cabecalho(QPPParser.Funcao_cabecalhoContext ctx) {
+//        return super.visitFuncao_cabecalho(ctx);
+//    }
 
     @Override
-    public TreeNode visitFuncao_cabecalho(QPPParser.Funcao_cabecalhoContext ctx) {
-        return super.visitFuncao_cabecalho(ctx);
-    }
+    public ParametrosFormais visitListaParametrosFormais(QPPParser.ListaParametrosFormaisContext ctx) {
 
-    @Override
-    public TreeNode visitListaParametrosFormais(QPPParser.ListaParametrosFormaisContext ctx) {
-        return super.visitListaParametrosFormais(ctx);
+        ArrayList<Tipo> parametros = new ArrayList<>();
+
+        for (QPPParser.TipoContext parametro : ctx.tipo()) {
+            parametros.add((Tipo) visit(parametro));
+        }
+
+        return new ParametrosFormais(parametros);
     }
 
     @Override
     public TreeNode visitParametrosFormaisVazio(QPPParser.ParametrosFormaisVazioContext ctx) {
-        return super.visitParametrosFormaisVazio(ctx);
+        return new ParametrosFormais();
     }
 
     @Override
-    public TreeNode visitTipoVoid(QPPParser.TipoVoidContext ctx) {
-        return super.visitTipoVoid(ctx);
+    public Tipo visitTipoVoid(QPPParser.TipoVoidContext ctx) {
+        return new Tipo(TipoEnum.VOID, QualificadorEnum.EMPTY, DecoradorEnum.EMPTY);
     }
 
     @Override
-    public TreeNode visitTipoInt(QPPParser.TipoIntContext ctx) {
-        return super.visitTipoInt(ctx);
+    public Tipo visitTipoInt(QPPParser.TipoIntContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.INT, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoFloat(QPPParser.TipoFloatContext ctx) {
-        return super.visitTipoFloat(ctx);
+    public Tipo visitTipoFloat(QPPParser.TipoFloatContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.FLOAT, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoChar(QPPParser.TipoCharContext ctx) {
-        return super.visitTipoChar(ctx);
+    public Tipo visitTipoChar(QPPParser.TipoCharContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.CHAR, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoBool(QPPParser.TipoBoolContext ctx) {
-        return super.visitTipoBool(ctx);
+    public Tipo visitTipoBool(QPPParser.TipoBoolContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.BOOL, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoNome(QPPParser.TipoNomeContext ctx) {
-        return super.visitTipoNome(ctx);
+    public Tipo visitTipoNome(QPPParser.TipoNomeContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.NOME, ctx.tipo_nome().getText(), qualificador, decorador);
     }
 
     @Override
@@ -162,34 +179,45 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         return super.visitTipoNomeAcesso(ctx);
     }
 
+//    @Override
+//    public TreeNode visitQualificadorConst(QPPParser.QualificadorConstContext ctx) {
+//        return super.visitQualificadorConst(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitQualificadorVazio(QPPParser.QualificadorVazioContext ctx) {
+//        return super.visitQualificadorVazio(ctx);
+//    }
+
+//    @Override
+//    public TreeNode visitDecoradorAmper(QPPParser.DecoradorAmperContext ctx) {
+//        return super.visitDecoradorAmper(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitDecoradorVazio(QPPParser.DecoradorVazioContext ctx) {
+//        return super.visitDecoradorVazio(ctx);
+//    }
+
     @Override
-    public TreeNode visitQualificadorConst(QPPParser.QualificadorConstContext ctx) {
-        return super.visitQualificadorConst(ctx);
+    public Bloco visitBloco(QPPParser.BlocoContext ctx) {
+        ArrayList<Comando> comandos = new ArrayList<>();
+        ArrayList<Variavel> variaveis = new ArrayList<>();
+
+        for (QPPParser.ComandoContext comando : ctx.comando()) {
+            comandos.add((Comando) visit(comando));
+        }
+
+        for (QPPParser.VariavelContext variavel : ctx.variavel()) {
+            variaveis.add((Variavel) visit(variavel));
+        }
+
+        return new Bloco(variaveis, comandos);
     }
 
     @Override
-    public TreeNode visitQualificadorVazio(QPPParser.QualificadorVazioContext ctx) {
-        return super.visitQualificadorVazio(ctx);
-    }
-
-    @Override
-    public TreeNode visitDecoradorAmper(QPPParser.DecoradorAmperContext ctx) {
-        return super.visitDecoradorAmper(ctx);
-    }
-
-    @Override
-    public TreeNode visitDecoradorVazio(QPPParser.DecoradorVazioContext ctx) {
-        return super.visitDecoradorVazio(ctx);
-    }
-
-    @Override
-    public TreeNode visitBloco(QPPParser.BlocoContext ctx) {
-        return super.visitBloco(ctx);
-    }
-
-    @Override
-    public TreeNode visitComandoBloco(QPPParser.ComandoBlocoContext ctx) {
-        return super.visitComandoBloco(ctx);
+    public Bloco visitComandoBloco(QPPParser.ComandoBlocoContext ctx) {
+        return visitBloco(ctx.bloco());
     }
 
     @Override
@@ -288,8 +316,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoUnario(QPPParser.ExpressaoUnarioContext ctx) {
-        return super.visitExpressaoUnario(ctx);
+    public ExpressaoUnario visitExpressaoUnario(QPPParser.ExpressaoUnarioContext ctx) {
+        return new ExpressaoUnario((OperadorUnario) visit(ctx.operador_unario()), (Expressao) visit(ctx.expressao()));
     }
 
     @Override
@@ -303,8 +331,10 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoOperadorBinario(QPPParser.ExpressaoOperadorBinarioContext ctx) {
-        return super.visitExpressaoOperadorBinario(ctx);
+    public ExpressaoOperadorBinario visitExpressaoOperadorBinario(QPPParser.ExpressaoOperadorBinarioContext ctx) {
+        return new ExpressaoOperadorBinario((Expressao) visit(ctx.expressao(0)),
+                (OperadorBinario) visit(ctx.operador_binario()),
+                (Expressao) visit(ctx.expressao(1)));
     }
 
     @Override
