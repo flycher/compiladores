@@ -3058,6 +3058,18 @@ public class QPPParser extends Parser {
 	}
 	public static class NomeListaIDContext extends Nome_listaContext {
 		public TerminalNode ID() { return getToken(QPPParser.ID, 0); }
+		public Nome_lista_Context nome_lista_() {
+			return getRuleContext(Nome_lista_Context.class,0);
+		}
+		public NomeListaIDContext(Nome_listaContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof QPPVisitor ) return ((QPPVisitor<? extends T>)visitor).visitNomeListaID(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NomeListaIDDBLCOLContext extends Nome_listaContext {
+		public TerminalNode ID() { return getToken(QPPParser.ID, 0); }
 		public TerminalNode DBLCOL() { return getToken(QPPParser.DBLCOL, 0); }
 		public List<Nome_listaContext> nome_lista() {
 			return getRuleContexts(Nome_listaContext.class);
@@ -3074,10 +3086,10 @@ public class QPPParser extends Parser {
 		public Nome_lista_Context nome_lista_() {
 			return getRuleContext(Nome_lista_Context.class,0);
 		}
-		public NomeListaIDContext(Nome_listaContext ctx) { copyFrom(ctx); }
+		public NomeListaIDDBLCOLContext(Nome_listaContext ctx) { copyFrom(ctx); }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof QPPVisitor ) return ((QPPVisitor<? extends T>)visitor).visitNomeListaID(this);
+			if ( visitor instanceof QPPVisitor ) return ((QPPVisitor<? extends T>)visitor).visitNomeListaIDDBLCOL(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3104,7 +3116,7 @@ public class QPPParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new NomeListaIDContext(_localctx);
+				_localctx = new NomeListaIDDBLCOLContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(365);

@@ -605,7 +605,7 @@ public class QPPBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements QP
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNomeListaID(QPPParser.NomeListaIDContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNomeListaIDDBLCOL(QPPParser.NomeListaIDDBLCOLContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -613,6 +613,13 @@ public class QPPBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements QP
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitNomeListaThisArrow(QPPParser.NomeListaThisArrowContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitNomeListaID(QPPParser.NomeListaIDContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

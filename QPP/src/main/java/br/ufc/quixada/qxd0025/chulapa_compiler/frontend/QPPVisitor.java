@@ -586,12 +586,12 @@ public interface QPPVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNomeListaIDDOT(QPPParser.NomeListaIDDOTContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NomeListaID}
+	 * Visit a parse tree produced by the {@code NomeListaIDDBLCOL}
 	 * labeled alternative in {@link QPPParser#nome_lista}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNomeListaID(QPPParser.NomeListaIDContext ctx);
+	T visitNomeListaIDDBLCOL(QPPParser.NomeListaIDDBLCOLContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code NomeListaThisArrow}
 	 * labeled alternative in {@link QPPParser#nome_lista}.
@@ -599,6 +599,13 @@ public interface QPPVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitNomeListaThisArrow(QPPParser.NomeListaThisArrowContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NomeListaID}
+	 * labeled alternative in {@link QPPParser#nome_lista}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNomeListaID(QPPParser.NomeListaIDContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code NomeListaLPAREN}
 	 * labeled alternative in {@link QPPParser#nome_lista_}.
