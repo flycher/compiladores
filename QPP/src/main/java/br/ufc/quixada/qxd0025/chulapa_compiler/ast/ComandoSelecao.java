@@ -2,38 +2,37 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 import java.util.ArrayList;
 
-public class Bloco extends Comando {
+public class ComandoSelecao extends Comando {
 
-    private final ArrayList<Variavel> variaveis;
+    private final Expressao expressao;
     private final ArrayList<Comando> comandos;
+    private final SelecaoSenao senao;
 
-    public Bloco(ArrayList<Variavel> variaveis, ArrayList<Comando> comandos) {
-        this.variaveis = variaveis;
+    public ComandoSelecao(Expressao expressao, ArrayList<Comando> comandos, SelecaoSenao senao) {
+        this.expressao = expressao;
         this.comandos = comandos;
+        this.senao = senao;
     }
 
-    public Bloco() {
-        this.variaveis = new ArrayList<Variavel>();
-        this.comandos = new ArrayList<Comando>();
-    }
-
-    public ArrayList<Variavel> getVariaveis() {
-        return variaveis;
+    public Expressao getExpressao() {
+        return expressao;
     }
 
     public ArrayList<Comando> getComandos() {
         return comandos;
     }
 
+    public SelecaoSenao getSenao() {
+        return senao;
+    }
+
     @Override
     public void printAtDepth(int depth) {
         System.out.print(" ".repeat(depth*2));
-        System.out.println("[Bloco]: {");
+        System.out.println("[Se]: {");
 
         System.out.print(" ".repeat(depth*2));
-        for (Variavel v: variaveis ) {
-            v.printAtDepth(depth+1);
-        }
+        expressao.printAtDepth(depth+1);
         System.out.print(" ".repeat(depth*2));
 
         for (Comando c: comandos) {
@@ -41,7 +40,9 @@ public class Bloco extends Comando {
         }
 
         System.out.print(" ".repeat(depth*2));
+        senao.printAtDepth(depth+1);
+
+        System.out.print(" ".repeat(depth*2));
         System.out.println("}");
     }
-
 }
