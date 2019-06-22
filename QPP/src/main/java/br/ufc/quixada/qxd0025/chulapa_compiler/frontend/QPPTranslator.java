@@ -8,16 +8,10 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     //TODO override vitita ao no
 
+
     @Override
-    public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
-        if(ctx.definicao().size() == 0) return new Programa();
-        ArrayList<Definicao> definicoes = new ArrayList<>();
-
-        for (QPPParser.DefinicaoContext def : ctx.definicao()) {
-            definicoes.add((Definicao) visit(def));
-        }
-
-        return new Programa(definicoes);
+    public TreeNode visitPrograma(QPPParser.ProgramaContext ctx) {
+        return super.visitPrograma(ctx);
     }
 
     @Override
