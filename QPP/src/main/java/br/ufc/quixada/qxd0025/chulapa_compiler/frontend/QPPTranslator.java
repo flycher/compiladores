@@ -10,12 +10,25 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     @Override
     public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
-        return new Programa();
+
+        if(ctx.definicao().size() == 0) return new Programa();
+        ArrayList<Definicao> definicoes = new ArrayList<>();
+
+        for (QPPParser.DefinicaoContext def : ctx.definicao()) {
+            definicoes.add((Definicao) visit(def));
+        }
+
+        return new Programa(definicoes);
     }
 
     @Override
-    public TreeNode visitDefinicaoFuncao(QPPParser.DefinicaoFuncaoContext ctx) {
-        return super.visitDefinicaoFuncao(ctx);
+    public DefinicaoFuncao visitDefinicaoFuncao(QPPParser.DefinicaoFuncaoContext ctx) {
+
+        Tipo ti = (Tipo) visit(ctx.funcao().funcao_cabecalho().tipo());
+        String id = ctx.funcao().funcao_cabecalho().ID().getSymbol().getText();
+        ParametrosFormais pf = (ParametrosFormais) visit(ctx.funcao().funcao_cabecalho().parametros_formais());
+        Bloco bl = (Bloco) visit(ctx.funcao().bloco());
+        return new DefinicaoFuncao(ti, id, pf, bl, ctx.getStart().getLine());
     }
 
     @Override
@@ -109,33 +122,45 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitTipoVoid(QPPParser.TipoVoidContext ctx) {
-        return super.visitTipoVoid(ctx);
+    public Tipo visitTipoVoid(QPPParser.TipoVoidContext ctx) {
+
+        return new Tipo(TipoEnum.VOID, QualificadorEnum.EMPTY, DecoradorEnum.EMPTY);
+
     }
 
     @Override
-    public TreeNode visitTipoInt(QPPParser.TipoIntContext ctx) {
-        return super.visitTipoInt(ctx);
+    public Tipo visitTipoInt(QPPParser.TipoIntContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.INT, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoFloat(QPPParser.TipoFloatContext ctx) {
-        return super.visitTipoFloat(ctx);
+    public Tipo visitTipoFloat(QPPParser.TipoFloatContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.FLOAT, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoChar(QPPParser.TipoCharContext ctx) {
-        return super.visitTipoChar(ctx);
+    public Tipo visitTipoChar(QPPParser.TipoCharContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.CHAR, qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoBool(QPPParser.TipoBoolContext ctx) {
-        return super.visitTipoBool(ctx);
+    public Tipo visitTipoBool(QPPParser.TipoBoolContext ctx) {
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.BOOL, qualificador, decorador);
     }
 
     @Override
     public TreeNode visitTipoNome(QPPParser.TipoNomeContext ctx) {
-        return super.visitTipoNome(ctx);
+        QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
+        DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
+        return new Tipo(TipoEnum.NOME, ctx.tipo_nome().getText() ,qualificador, decorador);
     }
 
     @Override
