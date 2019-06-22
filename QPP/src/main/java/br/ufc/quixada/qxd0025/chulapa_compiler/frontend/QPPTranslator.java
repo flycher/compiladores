@@ -31,45 +31,80 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         Bloco bl = (Bloco) visit(ctx.funcao().bloco());
         return new DefinicaoFuncao(ti, id, pf, bl, ctx.getStart().getLine());
     }
-
+//severo_Start
     @Override
-    public TreeNode visitDefinicaoEstrutura(QPPParser.DefinicaoEstruturaContext ctx) {
-        return super.visitDefinicaoEstrutura(ctx);
+    public DefinicaoEstrutura visitDefinicaoEstrutura(QPPParser.DefinicaoEstruturaContext ctx) {
+        String id = ctx.estrutura().ID().getSymbol().getText();
+        ArrayList<EstruturaAcesso> acessos = new ArrayList<>();
+
+        for(QPPParser.Estrutura_acessoContext c: ctx.estrutura().estrutura_acesso()){
+            acessos.add((EstruturaAcesso) visit(c));
+        }
+
+        return  new DefinicaoEstrutura(id, acessos);
     }
 
     @Override
     public TreeNode visitEstrutura(QPPParser.EstruturaContext ctx) {
+
         return super.visitEstrutura(ctx);
     }
 
     @Override
-    public TreeNode visitEstruturaAcessoPublic(QPPParser.EstruturaAcessoPublicContext ctx) {
-        return super.visitEstruturaAcessoPublic(ctx);
+    public EstruturaAcesso visitEstruturaAcessoPublic(QPPParser.EstruturaAcessoPublicContext ctx) {
+
+        ArrayList<Membro> mebros = new ArrayList<>();
+
+        for(QPPParser.MembroContext m : ctx.membro()){
+            mebros.add((Membro) visit(m));
+        }
+
+        return new EstruturaAcesso(AcessoEnum.PUBLIC, mebros);
     }
 
     @Override
-    public TreeNode visitEstruturaAcessoProtected(QPPParser.EstruturaAcessoProtectedContext ctx) {
-        return super.visitEstruturaAcessoProtected(ctx);
+    public EstruturaAcesso visitEstruturaAcessoProtected(QPPParser.EstruturaAcessoProtectedContext ctx) {
+        ArrayList<Membro> mebros = new ArrayList<>();
+
+        for(QPPParser.MembroContext m : ctx.membro()){
+            mebros.add((Membro) visit(m));
+        }
+
+        return new EstruturaAcesso(AcessoEnum.PROTECTED, mebros);
     }
 
     @Override
-    public TreeNode visitEstruturaAcessoPrivate(QPPParser.EstruturaAcessoPrivateContext ctx) {
-        return super.visitEstruturaAcessoPrivate(ctx);
+    public EstruturaAcesso visitEstruturaAcessoPrivate(QPPParser.EstruturaAcessoPrivateContext ctx) {
+        ArrayList<Membro> membros = new ArrayList<>();
+
+        for(QPPParser.MembroContext m : ctx.membro()){
+            membros.add((Membro) visit(m));
+        }
+
+        return new EstruturaAcesso(AcessoEnum.PRIVATE, membros);
     }
 
     @Override
-    public TreeNode visitMembroConstrutor(QPPParser.MembroConstrutorContext ctx) {
-        return super.visitMembroConstrutor(ctx);
+    public MembroConstrutor visitMembroConstrutor(QPPParser.MembroConstrutorContext ctx) {
+        String constId = ctx.construtor().ID().getSymbol().getText();
+        ParametrosFormais parametrosFormais = (ParametrosFormais) visit( ctx.construtor().parametros_formais());
+        Bloco bloco = (Bloco) visit(ctx.construtor().bloco());
+
+        return  new MembroConstrutor(constId, parametrosFormais, bloco);
     }
 
     @Override
-    public TreeNode visitMembroVariavel(QPPParser.MembroVariavelContext ctx) {
-        return super.visitMembroVariavel(ctx);
+    public MembroVariavel visitMembroVariavel(QPPParser.MembroVariavelContext ctx) {
+        Variavel variavel = (Variavel) visit(ctx.variavel());//ask Xavier if it's correct.
+        return  new MembroVariavel(variavel);
+
     }
 
     @Override
-    public TreeNode visitMembroMetodo(QPPParser.MembroMetodoContext ctx) {
-        return super.visitMembroMetodo(ctx);
+    public MembroMetodo visitMembroMetodo(QPPParser.MembroMetodoContext ctx) {
+        DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
+
+        return new MembroMetodo(definicaoFuncao, QualificadorEnum.CONST);//Ask xavier what to do.
     }
 
     @Override
@@ -81,7 +116,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     public TreeNode visitMembroStaticMetodo(QPPParser.MembroStaticMetodoContext ctx) {
         return super.visitMembroStaticMetodo(ctx);
     }
-
+//severo_end
     @Override
     public TreeNode visitVariavelCriacao(QPPParser.VariavelCriacaoContext ctx) {
         return super.visitVariavelCriacao(ctx);
