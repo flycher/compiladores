@@ -7,11 +7,11 @@ import java.util.ArrayList;
 public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     //TODO override vitita ao no
-
+    // ieqjfioqjdwoij
 
     @Override
-    public TreeNode visitPrograma(QPPParser.ProgramaContext ctx) {
-        return super.visitPrograma(ctx);
+    public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
+        return new Programa();
     }
 
     @Override
