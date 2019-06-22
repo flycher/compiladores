@@ -173,7 +173,7 @@ nome
 
 nome_lista
     : ID DOT nome_lista nome_lista_ # NomeListaIDDOT
-    | ID DBLCOL nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaID
+    | ID DBLCOL nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaIDDBLCOL
     | THIS ARROW nome_lista LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaThisArrow
     | ID nome_lista_ # NomeListaID
     ;

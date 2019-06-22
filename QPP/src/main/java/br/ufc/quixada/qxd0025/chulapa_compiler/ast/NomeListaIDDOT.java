@@ -1,17 +1,22 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
-
-public class NomeListaID extends NomeLista {
+public class NomeListaIDDOT extends NomeLista {
     private final String id;
+    private final NomeLista nomeLista;
     private final NomeLista_ nomeLista_;
 
-    public NomeListaID(String id, NomeLista_ nomeLista_) {
+    public NomeListaIDDOT(String id, NomeLista nomeLista, NomeLista_ nomeLista_) {
         this.id = id;
+        this.nomeLista = nomeLista;
         this.nomeLista_ = nomeLista_;
     }
 
     public String getId() {
         return id;
+    }
+
+    public NomeLista getNomeLista() {
+        return nomeLista;
     }
 
     public NomeLista_ getNomeLista_() {
@@ -20,12 +25,15 @@ public class NomeListaID extends NomeLista {
 
     @Override
     public void printAtDepth(int depth) {
-
         System.out.print(" ".repeat(depth * 2));
         System.out.print("[NomeListaIDDOT]: {");
 
         System.out.print(" ".repeat(depth * 2));
+
         System.out.print("ID: " + id);
+        System.out.print(" ".repeat(depth * 2));
+        System.out.print("NomeLista:");
+        nomeLista.printAtDepth(depth + 1);
         System.out.print(" ".repeat(depth * 2));
         System.out.print("NomeLista_:");
         nomeLista_.printAtDepth(depth + 1);
