@@ -3,10 +3,10 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 import java.util.ArrayList;
 
-public class ParamentrosReais extends TreeNode {
+public class ParametrosReais extends TreeNode {
     private final ArrayList<Expressao> expressoes;
 
-    public ParamentrosReais(ArrayList<Expressao> expressoes) {
+    public ParametrosReais(ArrayList<Expressao> expressoes) {
         this.expressoes = expressoes;
     }
 

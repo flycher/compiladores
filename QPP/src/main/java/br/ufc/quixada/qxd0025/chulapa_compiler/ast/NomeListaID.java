@@ -3,9 +3,9 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 public class NomeListaID extends NomeLista {
     private final String id;
-    private final NomeLista_ nomeLista_;
+    private final NomeListaLPAREN nomeLista_;
 
-    public NomeListaID(String id, NomeLista_ nomeLista_) {
+    public NomeListaID(String id, NomeListaLPAREN nomeLista_) {
         this.id = id;
         this.nomeLista_ = nomeLista_;
     }
@@ -14,7 +14,7 @@ public class NomeListaID extends NomeLista {
         return id;
     }
 
-    public NomeLista_ getNomeLista_() {
+    public NomeListaLPAREN getNomeLista_() {
         return nomeLista_;
     }
 

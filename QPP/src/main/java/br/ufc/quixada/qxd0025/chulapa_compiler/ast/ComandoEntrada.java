@@ -1,16 +1,15 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ComandoEntrada extends Comando {
-    private final ArrayList<nome> nomes;
+    private final ArrayList<Nome> nomes;
 
-    public ComandoEntrada(List<nome> nomes) {
+    public ComandoEntrada(ArrayList<Nome> nomes) {
         this.nomes = nomes;
     }
 
-    public List<nome> getNomes() {
+    public ArrayList<Nome> getNomes() {
         return nomes;
     }
 
@@ -21,7 +20,7 @@ public class ComandoEntrada extends Comando {
 
         System.out.print(" ".repeat(depth*2));
 
-        for (nome c: nomes) {
+        for (Nome c: nomes) {
         System.out.print(" ".repeat(depth*2));
             c.printAtDepth(depth+1);
         }

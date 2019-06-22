@@ -5,9 +5,9 @@ public class NomeListaIDDBLCOL extends NomeLista {
     private final NomeLista nomeLista1;
     private final ParametrosReais parametrosReais;
     private final NomeLista nomeLista2;
-    private final NomeLista_ nomeLista_;
+    private final NomeListaLPAREN nomeLista_;
 
-    public NomeListaIDDBLCOL(String id, NomeLista nomeLista1, ParametrosReais parametrosReais, NomeLista nomeLista2, NomeLista_ nomeLista_) {
+    public NomeListaIDDBLCOL(String id, NomeLista nomeLista1, ParametrosReais parametrosReais, NomeLista nomeLista2, NomeListaLPAREN nomeLista_) {
         this.id = id;
         this.nomeLista1 = nomeLista1;
         this.parametrosReais = parametrosReais;
@@ -31,7 +31,7 @@ public class NomeListaIDDBLCOL extends NomeLista {
         return nomeLista2;
     }
 
-    public NomeLista_ getNomeLista_() {
+    public NomeListaLPAREN getNomeLista_() {
         return nomeLista_;
     }
 
