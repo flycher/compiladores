@@ -1,5 +1,5 @@
 // Generated from /home/flycher/Dropbox/VScode/compiladores/QPP/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4 by ANTLR 4.7.2
-package frontend;
+package br.ufc.quixada.qxd0025.chulapa_compiler.frontend;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
