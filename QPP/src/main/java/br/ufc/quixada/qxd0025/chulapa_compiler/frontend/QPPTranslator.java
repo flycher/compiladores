@@ -82,24 +82,46 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         return super.visitMembroStaticMetodo(ctx);
     }
 
+    // INICIO
+
     @Override
     public TreeNode visitVariavelCriacao(QPPParser.VariavelCriacaoContext ctx) {
-        return super.visitVariavelCriacao(ctx);
+        Tipo t = (Tipo) visit(ctx.tipo());
+        String id = ctx.ID().getSymbol().getText();
+
+        return new VariavelCriacao(t, id, ctx.getStart().getLine());
     }
 
     @Override
     public TreeNode visitVariavelAtribuicao(QPPParser.VariavelAtribuicaoContext ctx) {
-        return super.visitVariavelAtribuicao(ctx);
+        Tipo tipo = (Tipo) visit(ctx.tipo());
+        String varid = ctx.ID().getSymbol().getText();
+        ComandoAtribuicao atribuicao = (ComandoAtribuicao) visit(ctx.atribuicao());
+
+        return new VariavelAtribuicao(tipo, varid, atribuicao, ctx.getStart().getLine());
     }
 
     @Override
-    public TreeNode visitConstrutor(QPPParser.ConstrutorContext ctx) {
-        return super.visitConstrutor(ctx);
+    public TreeNode visitConstrutor(QPPParser.ConstrutorContext ctx){
+        String constid = ctx.ID().getSymbol().getText();
+        ParametrosFormais parametrosFormais = (ParametrosFormais) visit(ctx.parametros_formais());
+        Bloco bloco = (Bloco) visit(ctx.bloco());
+
+        return new MembroConstrutor(constid, parametrosFormais, bloco);
     }
 
     @Override
-    public TreeNode visitMetodo(QPPParser.MetodoContext ctx) {
-        return super.visitMetodo(ctx);
+    public TreeNode visitMetodo(QPPParser.MetodoContext ctx){
+        DefinicaoFuncao metodo = (DefinicaoFuncao) visit(ctx.funcao_cabecalho()); // CONSERTAR
+        QualificadorEnum qualificador;
+
+        if(ctx.qualificador().getText() == ""){
+            qualificador = QualificadorEnum.EMPTY;
+        }else {
+            qualificador = QualificadorEnum.CONST;
+        }
+
+        return new MembroMetodo(metodo, qualificador);
     }
 
 //    @Override
@@ -254,6 +276,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     public TreeNode visitComandoExpressaoComando(QPPParser.ComandoExpressaoComandoContext ctx) {
         return super.visitComandoExpressaoComando(ctx);
     }
+
+    // END
 
     @Override
     public TreeNode visitComandoBreak(QPPParser.ComandoBreakContext ctx) {
