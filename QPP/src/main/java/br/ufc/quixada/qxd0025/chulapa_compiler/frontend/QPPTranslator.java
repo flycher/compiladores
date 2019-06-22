@@ -10,8 +10,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
 
     @Override
-    public TreeNode visitPrograma(QPPParser.ProgramaContext ctx) {
-        return super.visitPrograma(ctx);
+    public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
+        return new Programa();
     }
 
     @Override
