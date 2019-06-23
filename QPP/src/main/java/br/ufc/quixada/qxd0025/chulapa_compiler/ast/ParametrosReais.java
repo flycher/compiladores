@@ -10,6 +10,10 @@ public class ParametrosReais extends TreeNode {
         this.expressoes = expressoes;
     }
 
+    public ParametrosReais() {
+        expressoes = new ArrayList<>();
+    }
+
     public ArrayList<Expressao> getExpressoes() {
         return expressoes;
     }

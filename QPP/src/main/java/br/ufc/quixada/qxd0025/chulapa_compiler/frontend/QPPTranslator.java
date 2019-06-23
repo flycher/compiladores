@@ -31,7 +31,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         Bloco bl = (Bloco) visit(ctx.funcao().bloco());
         return new DefinicaoFuncao(ti, id, pf, bl, ctx.getStart().getLine());
     }
-//severo_Start
+
     @Override
     public DefinicaoEstrutura visitDefinicaoEstrutura(QPPParser.DefinicaoEstruturaContext ctx) {
         String id = ctx.estrutura().ID().getSymbol().getText();
@@ -95,7 +95,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     @Override
     public MembroVariavel visitMembroVariavel(QPPParser.MembroVariavelContext ctx) {
-        Variavel variavel = (Variavel) visit(ctx.variavel());// correct.
+        Variavel variavel = (Variavel) visit(ctx.variavel());
         return  new MembroVariavel(variavel);
 
     }
@@ -109,12 +109,12 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         }else {
             qualificador = QualificadorEnum.CONST;
         }
-        return new MembroMetodo(definicaoFuncao, qualificador);//correct.
+        return new MembroMetodo(definicaoFuncao, qualificador);
     }
 
     @Override
     public MembroStaticVariavel visitMembroStaticVariavel(QPPParser.MembroStaticVariavelContext ctx) {
-        Variavel variavel = (Variavel) visit(ctx.variavel());// correct.
+        Variavel variavel = (Variavel) visit(ctx.variavel());
         return  new MembroStaticVariavel(variavel);
     }
 
@@ -122,14 +122,14 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     public MembroStaticMetodo visitMembroStaticMetodo(QPPParser.MembroStaticMetodoContext ctx) {
         DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
         QualificadorEnum qualificador;
-        if(ctx.metodo().qualificador().getText() == ""){
+        if(ctx.metodo().qualificador().getText().equals("")){
             qualificador = QualificadorEnum.EMPTY;
         }else {
             qualificador = QualificadorEnum.CONST;
         }
-        return new MembroStaticMetodo(definicaoFuncao, qualificador);//correct.
+        return new MembroStaticMetodo(definicaoFuncao, qualificador);
     }
-//severo_end
+
 // INICIO lucas
 
     @Override
@@ -572,12 +572,19 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitParametrosReaisLista(QPPParser.ParametrosReaisListaContext ctx) {
-        return super.visitParametrosReaisLista(ctx);
+    public ParametrosReais visitParametrosReaisLista(QPPParser.ParametrosReaisListaContext ctx) {
+        ArrayList<Expressao> parametros = new ArrayList<>();
+
+
+        for (QPPParser.ExpressaoContext expressaoContext : ctx.expressao()) {
+            parametros.add((Expressao) visit(expressaoContext));
+        }
+
+        return new ParametrosReais(parametros);
     }
 
     @Override
-    public TreeNode visitParametrosReaisVazio(QPPParser.ParametrosReaisVazioContext ctx) {
-        return super.visitParametrosReaisVazio(ctx);
+    public ParametrosReais visitParametrosReaisVazio(QPPParser.ParametrosReaisVazioContext ctx) {
+        return new ParametrosReais();
     }
 }
