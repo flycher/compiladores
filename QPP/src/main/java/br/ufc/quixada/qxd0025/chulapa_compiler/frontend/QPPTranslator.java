@@ -559,18 +559,23 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitNomeListaID(QPPParser.NomeListaIDContext ctx) {
-        return super.visitNomeListaID(ctx);
+    public NomeLista visitNomeListaID(QPPParser.NomeListaIDContext ctx) {
+        String id = ctx.ID().getSymbol().getText();
+        Nome_Lista_ nomeListaLPAREN = (NomeListaLPAREN) visit(ctx.nome_lista_());
+        return  new NomeListaID(id, nomeListaLPAREN);
     }
 
     @Override
-    public TreeNode visitNomeListaLPAREN(QPPParser.NomeListaLPARENContext ctx) {
-        return super.visitNomeListaLPAREN(ctx);
+    public Nome_Lista_ visitNomeListaLPAREN(QPPParser.NomeListaLPARENContext ctx) {
+        ParametrosReais parametrosReais = (ParametrosReais) visit(ctx.parametros_reais());
+        NomeLista nomeLista = (NomeLista) visit(ctx.nome_lista());
+        Nome_Lista_ nome_lista_= (Nome_Lista_) visit(ctx.nome_lista_());//Codigo duvidoso
+        return  new NomeListaLPAREN(parametrosReais, nomeLista, nome_lista_);
     }
 
     @Override
-    public TreeNode visitNomeListaEmpty(QPPParser.NomeListaEmptyContext ctx) {
-        return super.visitNomeListaEmpty(ctx);
+    public Nome_Lista_ visitNomeListaEmpty(QPPParser.NomeListaEmptyContext ctx) {
+        return new NomeListaEmpty();
     }
 
     @Override
