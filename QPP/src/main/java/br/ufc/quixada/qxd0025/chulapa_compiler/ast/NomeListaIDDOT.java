@@ -3,9 +3,9 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 public class NomeListaIDDOT extends NomeLista {
     private final String id;
     private final NomeLista nomeLista;
-    private final NomeListaLPAREN nomeLista_;
+    private final Nome_Lista_ nomeLista_;
 
-    public NomeListaIDDOT(String id, NomeLista nomeLista, NomeListaLPAREN nomeLista_) {
+    public NomeListaIDDOT(String id, NomeLista nomeLista, Nome_Lista_ nomeLista_) {
         this.id = id;
         this.nomeLista = nomeLista;
         this.nomeLista_ = nomeLista_;
@@ -19,7 +19,7 @@ public class NomeListaIDDOT extends NomeLista {
         return nomeLista;
     }
 
-    public NomeListaLPAREN getNomeLista_() {
+    public Nome_Lista_ getNomeLista_() {
         return nomeLista_;
     }
 

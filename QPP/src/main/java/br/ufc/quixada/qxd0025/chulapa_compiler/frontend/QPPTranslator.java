@@ -44,11 +44,11 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         return  new DefinicaoEstrutura(id, acessos);
     }
 
-    @Override
-    public TreeNode visitEstrutura(QPPParser.EstruturaContext ctx) {
-
-        return super.visitEstrutura(ctx);
-    }
+//    @Override
+//    public TreeNode visitEstrutura(QPPParser.EstruturaContext ctx) {
+//
+//        return super.visitEstrutura(ctx);
+//    }
 
     @Override
     public EstruturaAcesso visitEstruturaAcessoPublic(QPPParser.EstruturaAcessoPublicContext ctx) {
@@ -133,7 +133,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 // INICIO lucas
 
     @Override
-    public TreeNode visitVariavelCriacao(QPPParser.VariavelCriacaoContext ctx) {
+    public VariavelCriacao visitVariavelCriacao(QPPParser.VariavelCriacaoContext ctx) {
         Tipo t = (Tipo) visit(ctx.tipo());
         String id = ctx.ID().getSymbol().getText();
 
@@ -141,7 +141,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitVariavelAtribuicao(QPPParser.VariavelAtribuicaoContext ctx) {
+    public VariavelAtribuicao visitVariavelAtribuicao(QPPParser.VariavelAtribuicaoContext ctx) {
         Tipo tipo = (Tipo) visit(ctx.tipo());
         String varid = ctx.ID().getSymbol().getText();
         ComandoAtribuicao atribuicao = (ComandoAtribuicao) visit(ctx.atribuicao());
@@ -150,7 +150,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitConstrutor(QPPParser.ConstrutorContext ctx){
+    public MembroConstrutor visitConstrutor(QPPParser.ConstrutorContext ctx){
         String constid = ctx.ID().getSymbol().getText();
         ParametrosFormais parametrosFormais = (ParametrosFormais) visit(ctx.parametros_formais());
         Bloco bloco = (Bloco) visit(ctx.bloco());
@@ -159,7 +159,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitMetodo(QPPParser.MetodoContext ctx){
+    public MembroMetodo visitMetodo(QPPParser.MetodoContext ctx){
         DefinicaoFuncao metodo = (DefinicaoFuncao) visit(ctx.funcao_cabecalho()); // CONSERTAR
         QualificadorEnum qualificador;
 
@@ -197,7 +197,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitParametrosFormaisVazio(QPPParser.ParametrosFormaisVazioContext ctx) {
+    public ParametrosFormais visitParametrosFormaisVazio(QPPParser.ParametrosFormaisVazioContext ctx) {
         return new ParametrosFormais();
     }
 
@@ -238,17 +238,17 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     public Tipo visitTipoNome(QPPParser.TipoNomeContext ctx) {
         QualificadorEnum qualificador = ctx.qualificador().getText().equals("") ? QualificadorEnum.EMPTY : QualificadorEnum.CONST;
         DecoradorEnum decorador = ctx.decorador().getText().equals("") ? DecoradorEnum.EMPTY : DecoradorEnum.AMPER;
-        return new Tipo(TipoEnum.NOME, ctx.tipo_nome().getText(), qualificador, decorador);
+        return new Tipo(TipoEnum.NOME, (TipoNome) visit(ctx.tipo_nome()), qualificador, decorador);
     }
 
     @Override
-    public TreeNode visitTipoID(QPPParser.TipoIDContext ctx) {
-        return super.visitTipoID(ctx);
+    public TipoNome visitTipoID(QPPParser.TipoIDContext ctx) {
+        return new TipoNome(null, ctx.ID().getSymbol().getText());
     }
 
     @Override
-    public TreeNode visitTipoNomeAcesso(QPPParser.TipoNomeAcessoContext ctx) {
-        return super.visitTipoNomeAcesso(ctx);
+    public TipoNome visitTipoNomeAcesso(QPPParser.TipoNomeAcessoContext ctx) {
+        return new TipoNome((TipoNome) visit(ctx.tipo_nome()), ctx.ID().getSymbol().getText());
     }
 
 //    @Override
@@ -386,8 +386,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoCHARL(QPPParser.ExpressaoCHARLContext ctx) {
-        return super.visitExpressaoCHARL(ctx);
+    public Expressao visitExpressaoCHARL(QPPParser.ExpressaoCHARLContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.CHARL, ctx.CHARL().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
@@ -401,8 +401,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoFLOATL(QPPParser.ExpressaoFLOATLContext ctx) {
-        return super.visitExpressaoFLOATL(ctx);
+    public Expressao visitExpressaoFLOATL(QPPParser.ExpressaoFLOATLContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.FLOATL, ctx.FLOATL().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
@@ -413,33 +413,33 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoINTL(QPPParser.ExpressaoINTLContext ctx) {
-        return super.visitExpressaoINTL(ctx);
+    public Expressao visitExpressaoINTL(QPPParser.ExpressaoINTLContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.INTL, ctx.INTL().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
-    public TreeNode visitExpressaoTrue(QPPParser.ExpressaoTrueContext ctx) {
-        return super.visitExpressaoTrue(ctx);
+    public Expressao visitExpressaoTrue(QPPParser.ExpressaoTrueContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.TRUE, ctx.TRUE().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
-    public TreeNode visitExpressaoFalse(QPPParser.ExpressaoFalseContext ctx) {
-        return super.visitExpressaoFalse(ctx);
+    public Expressao visitExpressaoFalse(QPPParser.ExpressaoFalseContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.FALSE, ctx.FALSE().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
     public Expressao visitExpressaoLarenRparen(QPPParser.ExpressaoLarenRparenContext ctx) {
-        return new ExpressaoLarenRparen(visit(ctx.expressao());
+        return new ExpressaoLarenRparen((Expressao) visit(ctx.expressao()));
     }
 
     @Override
     public Expressao visitExpressaoParametrosReais(QPPParser.ExpressaoParametrosReaisContext ctx) {
-        return new ExpressaoParametrosReais((Nome) visit(ctx.nome()), visit(ctx.parametros_reais()));
+        return new ExpressaoParametrosReais((Nome) visit(ctx.nome()), (ParametrosReais) visit(ctx.parametros_reais()));
     }
 
     @Override
-    public TreeNode visitExpressaoSTRL(QPPParser.ExpressaoSTRLContext ctx) {
-        return super.visitExpressaoSTRL(ctx);
+    public Expressao visitExpressaoSTRL(QPPParser.ExpressaoSTRLContext ctx) {
+        return new ExpressaoTipo(ExpressaoTipoEnum.STRL, ctx.STRL().getSymbol().getText(), ctx.start.getLine());
     }
 
     @Override
@@ -529,28 +529,32 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitNomeID(QPPParser.NomeIDContext ctx) {
-        return super.visitNomeID(ctx);
+    public Nome visitNomeID(QPPParser.NomeIDContext ctx) {
+        return new NomeID(ctx.ID().getSymbol().getText(), (NomeLista) visit(ctx.nome_lista()));
     }
 
     @Override
-    public TreeNode visitNomeThisArrow(QPPParser.NomeThisArrowContext ctx) {
-        return super.visitNomeThisArrow(ctx);
+    public Nome visitNomeThisArrow(QPPParser.NomeThisArrowContext ctx) {
+        return new NomeThisArrow((NomeLista) visit(ctx.nome_lista()));
     }
 
     @Override
-    public TreeNode visitNomeNomeLista(QPPParser.NomeNomeListaContext ctx) {
-        return super.visitNomeNomeLista(ctx);
+    public Nome visitNomeNomeLista(QPPParser.NomeNomeListaContext ctx) {
+        return new NomeNomeLista((NomeLista) visit(ctx.nome_lista()));
     }
 
     @Override
-    public TreeNode visitNomeListaIDDOT(QPPParser.NomeListaIDDOTContext ctx) {
-        return super.visitNomeListaIDDOT(ctx);
+    public NomeLista visitNomeListaIDDOT(QPPParser.NomeListaIDDOTContext ctx) {
+        return new NomeListaIDDOT(ctx.ID().getSymbol().getText(),
+                (NomeLista) visit(ctx.nome_lista()),
+                (Nome_Lista_) visit(ctx.nome_lista_()));
     }
 
     @Override
-    public TreeNode visitNomeListaIDDBLCOL(QPPParser.NomeListaIDDBLCOLContext ctx) {
-        return super.visitNomeListaIDDBLCOL(ctx);
+    public NomeLista visitNomeListaIDDBLCOL(QPPParser.NomeListaIDDBLCOLContext ctx) {
+        return new NomeListaIDDBLCOL(ctx.ID().getSymbol().getText(), (NomeLista) visit(ctx.nome_lista(0)),
+                (ParametrosReais) visit(ctx.parametros_reais()), (NomeLista) visit(ctx.nome_lista(1)),
+                (Nome_Lista_) visit(ctx.nome_lista_()));
     }
 
     @Override

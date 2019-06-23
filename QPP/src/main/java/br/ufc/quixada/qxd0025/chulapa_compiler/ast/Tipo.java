@@ -3,11 +3,11 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 public class Tipo extends TreeNode {
 
     private final TipoEnum tipo;
-    private String tipoNome;
+    private TipoNome tipoNome;
     private final QualificadorEnum qualificador;
     private final DecoradorEnum decorador;
 
-    public Tipo(TipoEnum tipo, String tipoNome, QualificadorEnum qualificador, DecoradorEnum decorador) {
+    public Tipo(TipoEnum tipo, TipoNome tipoNome, QualificadorEnum qualificador, DecoradorEnum decorador) {
         this.tipo = tipo;
         this.tipoNome = tipoNome;
         this.qualificador = qualificador;
@@ -16,7 +16,7 @@ public class Tipo extends TreeNode {
 
     public Tipo(TipoEnum tipo, QualificadorEnum qualificador, DecoradorEnum decorador) {
         this.tipo = tipo;
-        this.tipoNome = "";
+        this.tipoNome = null;
         this.qualificador = qualificador;
         this.decorador = decorador;
     }
@@ -29,6 +29,8 @@ public class Tipo extends TreeNode {
         return qualificador;
     }
 
+    public TipoNome getTipoNome() { return tipoNome; }
+
     public DecoradorEnum getDecorador() {
         return decorador;
     }
@@ -40,6 +42,8 @@ public class Tipo extends TreeNode {
 
         System.out.print(" ".repeat(depth*4));
         System.out.println(qualificador + " " + tipo + " " + decorador);
+        if(tipoNome != null)
+            tipoNome.printAtDepth(depth+1);
 
         System.out.print(" ".repeat(depth*3));
         System.out.println("}");

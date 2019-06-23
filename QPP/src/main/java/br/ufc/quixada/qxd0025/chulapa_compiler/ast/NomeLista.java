@@ -1,5 +1,4 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
-abstract class NomeLista extends TreeNode {
-
+public abstract class NomeLista extends TreeNode {
 }
