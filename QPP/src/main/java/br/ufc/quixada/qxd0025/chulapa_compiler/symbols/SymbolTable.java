@@ -10,9 +10,9 @@ public class SymbolTable {
     private long lastResult = 0;
 
     public Optional<SymbolType> getSymbolType(Symbol s) {
-        if(variables.contains(s)) {
+        if (variables.contains(s)) {
             return Optional.of(SymbolType.VARIABLE);
-        } else if(functions.containsKey(s)) {
+        } else if (functions.containsKey(s)) {
             return Optional.of(SymbolType.FUNCTION);
         } else {
             return Optional.empty();
@@ -20,7 +20,7 @@ public class SymbolTable {
     }
 
     public boolean ensureIsVariable(Symbol v) {
-        if(!functions.containsKey(v)) {
+        if (!functions.containsKey(v)) {
             variables.add(v);
 
             return true;
@@ -34,7 +34,7 @@ public class SymbolTable {
     }
 
     public boolean ensureIsNewFunction(Symbol f, ArrayList<Symbol> parameters) {
-        if(!(variables.contains(f) || functions.containsKey(f))) {
+        if (!(variables.contains(f) || functions.containsKey(f))) {
             functions.put(f, parameters);
 
             return true;
@@ -44,7 +44,7 @@ public class SymbolTable {
     }
 
     public int countFunctionArguments(Symbol f) {
-        if(!functions.containsKey(f)) {
+        if (!functions.containsKey(f)) {
             return -1;
         } else {
             return functions.get(f).size();
@@ -55,7 +55,9 @@ public class SymbolTable {
         return variables.contains(v);
     }
 
-    public boolean containsResult(long result) { return result <= this.lastResult; }
+    public boolean containsResult(long result) {
+        return result <= this.lastResult;
+    }
 
     public boolean containsFunction(Symbol f) {
         return functions.containsKey(f);

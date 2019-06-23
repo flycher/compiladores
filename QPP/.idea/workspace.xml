@@ -3,6 +3,54 @@
   <component name="ChangeListManager">
     <list default="true" id="ed30ccb4-d035-4ed3-ac47-ea0d6b6af6c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Bloco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Bloco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Comando.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Comando.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoAtribuicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoAtribuicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoBreak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoEntrada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRepeticao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRepeticao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRetorno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRetorno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSaida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSaida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSelecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSelecao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DefinicaoEstrutura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DefinicaoEstrutura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DefinicaoFuncao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DefinicaoFuncao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/EstruturaAcesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/EstruturaAcesso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Expressao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Expressao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoExpressao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoExpressao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoSEMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoSEMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoLarenRparen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoLarenRparen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoNome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoNome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoOperadorBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoOperadorBinario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoParametrosReais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoParametrosReais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipoEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoUnario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoUnario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroConstrutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroConstrutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroMetodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroMetodo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroStaticMetodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroStaticMetodo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroStaticVariavel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroStaticVariavel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroVariavel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/MembroVariavel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaEmpty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaLPAREN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaLPAREN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/OperadorUnarioEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/OperadorUnarioEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Parametro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Parametro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosFormais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosFormais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosReais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosReais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/SelecaoSenao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/SelecaoSenao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/TipoNome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/TipoNome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelAtribuicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelAtribuicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelCriacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelCriacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/test1.qpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/test1.qpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,43 +67,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="126" column="48" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11260">
-              <caret line="563" lean-forward="true" selection-start-line="563" selection-end-line="563" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#10727#10728#0" expanded="true" />
-                <element signature="e#10773#10774#0" expanded="true" />
-                <element signature="e#10865#10866#0" expanded="true" />
-                <element signature="e#10917#10918#0" expanded="true" />
-                <element signature="e#11317#11318#0" expanded="true" />
-                <element signature="e#11370#11371#0" expanded="true" />
-                <element signature="e#11464#11465#0" expanded="true" />
-                <element signature="e#11517#11518#0" expanded="true" />
-                <element signature="e#11607#11608#0" expanded="true" />
-                <element signature="e#11658#11659#0" expanded="true" />
-                <element signature="e#11922#11923#0" expanded="true" />
-                <element signature="e#11973#11974#0" expanded="true" />
-                <element signature="e#21121#21122#0" expanded="true" />
-                <element signature="e#21164#21165#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -66,8 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lista_declaracoes_locais</find>
-      <find>declaracoes_locais</find>
       <find>formais</find>
       <find>EMPTY</find>
       <find>parâmetro</find>
@@ -96,6 +106,8 @@
       <find>Nome</find>
       <find>get</find>
       <find>getL</find>
+      <find>ExpressaoComandoExpressao</find>
+      <find>NomeListaLPAREN</find>
     </findStrings>
     <replaceStrings>
       <replace>Vazio</replace>
@@ -140,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelCriacao.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/VariavelAtribuicao.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/Main.java" />
-        <option value="$PROJECT_DIR$/test_files/test1.qpp" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Comando.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosFormais.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Parametro.java" />
@@ -149,10 +160,11 @@
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/TipoNome.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDBLCOL.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDOT.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" />
+        <option value="$PROJECT_DIR$/test_files/test1.qpp" />
       </list>
     </option>
   </component>
@@ -176,7 +188,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,40 +233,13 @@
             <path>
               <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
               <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="chulapa_compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="chulapa_compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QPP" type="462c0819:PsiDirectoryNode" />
               <item name="test_files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,11 +317,13 @@
       <workItem from="1561206373937" duration="25893000" />
       <workItem from="1561238240252" duration="44000" />
       <workItem from="1561306568434" duration="10192000" />
+      <workItem from="1561318060155" duration="54000" />
+      <workItem from="1561318818243" duration="1054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63769000" />
+    <option name="totallyTimeSpent" value="64877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -350,9 +336,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22198506" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22732124" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -593,13 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_files/test1.qpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Bloco.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
@@ -836,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoExpressao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -850,26 +821,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoExpressao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_files/test1.qpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11260">
-          <caret line="563" lean-forward="true" selection-start-line="563" selection-end-line="563" />
+        <state relative-caret-position="209">
+          <caret line="638" column="35" selection-start-line="638" selection-start-column="35" selection-end-line="638" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10727#10728#0" expanded="true" />
-            <element signature="e#10773#10774#0" expanded="true" />
-            <element signature="e#10865#10866#0" expanded="true" />
-            <element signature="e#10917#10918#0" expanded="true" />
-            <element signature="e#11317#11318#0" expanded="true" />
-            <element signature="e#11370#11371#0" expanded="true" />
-            <element signature="e#11464#11465#0" expanded="true" />
-            <element signature="e#11517#11518#0" expanded="true" />
-            <element signature="e#11607#11608#0" expanded="true" />
-            <element signature="e#11658#11659#0" expanded="true" />
-            <element signature="e#11922#11923#0" expanded="true" />
-            <element signature="e#11973#11974#0" expanded="true" />
-            <element signature="e#21121#21122#0" expanded="true" />
-            <element signature="e#21164#21165#0" expanded="true" />
+            <element signature="e#14538#14544#0" expanded="true" />
           </folding>
         </state>
       </provider>

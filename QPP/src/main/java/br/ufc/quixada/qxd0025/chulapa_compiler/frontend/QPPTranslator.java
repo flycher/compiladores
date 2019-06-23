@@ -8,7 +8,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     @Override
     public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
 
-        if(ctx.definicao().size() == 0) return new Programa();
+        if (ctx.definicao().size() == 0) return new Programa();
         ArrayList<Definicao> definicoes = new ArrayList<>();
 
         for (QPPParser.DefinicaoContext def : ctx.definicao()) {
@@ -33,11 +33,11 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
         String id = ctx.estrutura().ID().getSymbol().getText();
         ArrayList<EstruturaAcesso> acessos = new ArrayList<>();
 
-        for(QPPParser.Estrutura_acessoContext c: ctx.estrutura().estrutura_acesso()){
+        for (QPPParser.Estrutura_acessoContext c : ctx.estrutura().estrutura_acesso()) {
             acessos.add((EstruturaAcesso) visit(c));
         }
 
-        return  new DefinicaoEstrutura(id, acessos);
+        return new DefinicaoEstrutura(id, acessos);
     }
 
 //    @Override
@@ -51,7 +51,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
 
         ArrayList<Membro> mebros = new ArrayList<>();
 
-        for(QPPParser.MembroContext m : ctx.membro()){
+        for (QPPParser.MembroContext m : ctx.membro()) {
             mebros.add((Membro) visit(m));
         }
 
@@ -62,7 +62,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public EstruturaAcesso visitEstruturaAcessoProtected(QPPParser.EstruturaAcessoProtectedContext ctx) {
         ArrayList<Membro> mebros = new ArrayList<>();
 
-        for(QPPParser.MembroContext m : ctx.membro()){
+        for (QPPParser.MembroContext m : ctx.membro()) {
             mebros.add((Membro) visit(m));
         }
 
@@ -73,7 +73,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public EstruturaAcesso visitEstruturaAcessoPrivate(QPPParser.EstruturaAcessoPrivateContext ctx) {
         ArrayList<Membro> membros = new ArrayList<>();
 
-        for(QPPParser.MembroContext m : ctx.membro()){
+        for (QPPParser.MembroContext m : ctx.membro()) {
             membros.add((Membro) visit(m));
         }
 
@@ -83,16 +83,16 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     @Override
     public MembroConstrutor visitMembroConstrutor(QPPParser.MembroConstrutorContext ctx) {
         String constId = ctx.construtor().ID().getSymbol().getText();
-        ParametrosFormais parametrosFormais = (ParametrosFormais) visit( ctx.construtor().parametros_formais());
+        ParametrosFormais parametrosFormais = (ParametrosFormais) visit(ctx.construtor().parametros_formais());
         Bloco bloco = (Bloco) visit(ctx.construtor().bloco());
 
-        return  new MembroConstrutor(constId, parametrosFormais, bloco);
+        return new MembroConstrutor(constId, parametrosFormais, bloco);
     }
 
     @Override
     public MembroVariavel visitMembroVariavel(QPPParser.MembroVariavelContext ctx) {
         Variavel variavel = (Variavel) visit(ctx.variavel());
-        return  new MembroVariavel(variavel);
+        return new MembroVariavel(variavel);
 
     }
 
@@ -100,9 +100,9 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public MembroMetodo visitMembroMetodo(QPPParser.MembroMetodoContext ctx) {
         DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
         QualificadorEnum qualificador;
-        if(ctx.metodo().qualificador().getText() == ""){
+        if (ctx.metodo().qualificador().getText() == "") {
             qualificador = QualificadorEnum.EMPTY;
-        }else {
+        } else {
             qualificador = QualificadorEnum.CONST;
         }
         return new MembroMetodo(definicaoFuncao, qualificador);
@@ -111,16 +111,16 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     @Override
     public MembroStaticVariavel visitMembroStaticVariavel(QPPParser.MembroStaticVariavelContext ctx) {
         Variavel variavel = (Variavel) visit(ctx.variavel());
-        return  new MembroStaticVariavel(variavel);
+        return new MembroStaticVariavel(variavel);
     }
 
     @Override
     public MembroStaticMetodo visitMembroStaticMetodo(QPPParser.MembroStaticMetodoContext ctx) {
         DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
         QualificadorEnum qualificador;
-        if(ctx.metodo().qualificador().getText().equals("")){
+        if (ctx.metodo().qualificador().getText().equals("")) {
             qualificador = QualificadorEnum.EMPTY;
-        }else {
+        } else {
             qualificador = QualificadorEnum.CONST;
         }
         return new MembroStaticMetodo(definicaoFuncao, qualificador);
@@ -146,7 +146,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     }
 
     @Override
-    public MembroConstrutor visitConstrutor(QPPParser.ConstrutorContext ctx){
+    public MembroConstrutor visitConstrutor(QPPParser.ConstrutorContext ctx) {
         String constid = ctx.ID().getSymbol().getText();
         ParametrosFormais parametrosFormais = (ParametrosFormais) visit(ctx.parametros_formais());
         Bloco bloco = (Bloco) visit(ctx.bloco());
@@ -155,13 +155,13 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     }
 
     @Override
-    public MembroMetodo visitMetodo(QPPParser.MetodoContext ctx){
+    public MembroMetodo visitMetodo(QPPParser.MetodoContext ctx) {
         DefinicaoFuncao metodo = (DefinicaoFuncao) visit(ctx.funcao_cabecalho()); // CONSERTAR
         QualificadorEnum qualificador;
 
-        if(ctx.qualificador().getText().equals("")){
+        if (ctx.qualificador().getText().equals("")) {
             qualificador = QualificadorEnum.EMPTY;
-        }else {
+        } else {
             qualificador = QualificadorEnum.CONST;
         }
 
@@ -296,7 +296,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
 
         expressao = (Expressao) visit(ctx.selecao().expressao());
 
-        for(QPPParser.ComandoContext e : ctx.selecao().comando()){
+        for (QPPParser.ComandoContext e : ctx.selecao().comando()) {
             comandos.add((Comando) visit(e));
         }
 
@@ -312,7 +312,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
 
         expressao = (Expressao) visit(ctx.repeticao().expressao());
 
-        for(QPPParser.ComandoContext e : ctx.repeticao().comando()){
+        for (QPPParser.ComandoContext e : ctx.repeticao().comando()) {
             comandos.add((Comando) visit(e));
         }
 
@@ -344,7 +344,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public Comando visitComandoEntrada(QPPParser.ComandoEntradaContext ctx) {
         ArrayList<Nome> nomes = new ArrayList<Nome>();
 
-        for(QPPParser.NomeContext e : ctx.entrada().nome()){
+        for (QPPParser.NomeContext e : ctx.entrada().nome()) {
             nomes.add((Nome) visit(e));
         }
 
@@ -355,7 +355,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public Comando visitComandoSaida(QPPParser.ComandoSaidaContext ctx) {
         ArrayList<Expressao> expressoes = new ArrayList<Expressao>();
 
-        for(QPPParser.ExpressaoContext e : ctx.saida().expressao()){
+        for (QPPParser.ExpressaoContext e : ctx.saida().expressao()) {
             expressoes.add((Expressao) visit(e));
         }
 
@@ -406,10 +406,10 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
 //    }
 
     @Override
-    public TreeNode visitEntrada(QPPParser.EntradaContext ctx) {
+    public Comando visitEntrada(QPPParser.EntradaContext ctx) {
         ArrayList<Nome> nomes = new ArrayList<Nome>();
 
-        for(QPPParser.NomeContext e : ctx.nome()){
+        for (QPPParser.NomeContext e : ctx.nome()) {
             nomes.add((Nome) visit(e));
         }
 
@@ -417,10 +417,10 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     }
 
     @Override
-    public TreeNode visitSaida(QPPParser.SaidaContext ctx) {
+    public Comando visitSaida(QPPParser.SaidaContext ctx) {
         ArrayList<Expressao> expressoes = new ArrayList<Expressao>();
 
-        for(QPPParser.ExpressaoContext e : ctx.expressao()){
+        for (QPPParser.ExpressaoContext e : ctx.expressao()) {
             expressoes.add((Expressao) visit(e));
         }
 
@@ -628,15 +628,15 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public NomeLista visitNomeListaID(QPPParser.NomeListaIDContext ctx) {
         String id = ctx.ID().getSymbol().getText();
         Nome_Lista_ nomeListaLPAREN = (NomeListaLPAREN) visit(ctx.nome_lista_());
-        return  new NomeListaID(id, nomeListaLPAREN);
+        return new NomeListaID(id, nomeListaLPAREN);
     }
 
     @Override
     public Nome_Lista_ visitNomeListaLPAREN(QPPParser.NomeListaLPARENContext ctx) {
         ParametrosReais parametrosReais = (ParametrosReais) visit(ctx.parametros_reais());
         NomeLista nomeLista = (NomeLista) visit(ctx.nome_lista());
-        Nome_Lista_ nome_lista_= (Nome_Lista_) visit(ctx.nome_lista_());//Codigo duvidoso
-        return  new NomeListaLPAREN(parametrosReais, nomeLista, nome_lista_);
+        Nome_Lista_ nome_lista_ = (Nome_Lista_) visit(ctx.nome_lista_());//Codigo duvidoso
+        return new NomeListaLPAREN(parametrosReais, nomeLista, nome_lista_);
     }
 
     @Override

@@ -20,16 +20,16 @@ public class MembroMetodo extends TreeNode {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Metodos]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        metodo.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        metodo.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println(qualificador);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

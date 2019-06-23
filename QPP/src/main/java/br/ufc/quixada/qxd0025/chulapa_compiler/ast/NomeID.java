@@ -19,14 +19,14 @@ public class NomeID extends Nome {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[NomeID]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
         nomeLista.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

@@ -22,18 +22,18 @@ public class ComandoRepeticao extends Comando {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Repeticao]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        expressao.printAtDepth(depth+1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
+        expressao.printAtDepth(depth + 1);
+        System.out.print(" ".repeat(depth * 2));
 
-        for (Comando c: comandos) {
-            c.printAtDepth(depth+1);
+        for (Comando c : comandos) {
+            c.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

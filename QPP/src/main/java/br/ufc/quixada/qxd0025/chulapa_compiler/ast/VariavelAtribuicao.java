@@ -1,6 +1,6 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
-public class VariavelAtribuicao extends Variavel{
+public class VariavelAtribuicao extends Variavel {
 
     private final Tipo tipo;
     private final String varid;
@@ -32,20 +32,20 @@ public class VariavelAtribuicao extends Variavel{
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[DeclaracaoVariavel ]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("Name: " + varid + "     Type: " + tipo);
 
-        if(atribuicao != null){
-            System.out.print(" ".repeat(depth*2));
-            atribuicao.printAtDepth(depth+1);
+        if (atribuicao != null) {
+            System.out.print(" ".repeat(depth * 2));
+            atribuicao.printAtDepth(depth + 1);
             System.out.println("Expression: ");
 
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
 
     }

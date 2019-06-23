@@ -22,15 +22,15 @@ public class DefinicaoEstrutura extends Definicao {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Estrutura]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        for (EstruturaAcesso a: acessos ) {
-            a.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        for (EstruturaAcesso a : acessos) {
+            a.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
 
     }

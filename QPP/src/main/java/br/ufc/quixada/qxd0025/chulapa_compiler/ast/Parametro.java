@@ -28,10 +28,10 @@ public class Parametro extends TreeNode {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
-        System.out.println(tipo.getQualificador() + " " + tipo.getTipo() + " " + id  + " " + tipo.getDecorador());
+        System.out.println(tipo.getQualificador() + " " + tipo.getTipo() + " " + id + " " + tipo.getDecorador());
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
     }
 }

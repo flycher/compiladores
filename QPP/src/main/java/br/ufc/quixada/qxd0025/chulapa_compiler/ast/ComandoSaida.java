@@ -15,16 +15,16 @@ public class ComandoSaida extends Comando {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Saida]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
-        for (Expressao c: expressoes) {
-            c.printAtDepth(depth+1);
+        for (Expressao c : expressoes) {
+            c.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

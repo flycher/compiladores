@@ -1,6 +1,6 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler;
 
-import br.ufc.quixada.qxd0025.chulapa_compiler.ast.*;
+import br.ufc.quixada.qxd0025.chulapa_compiler.ast.Programa;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPLexer;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPParser;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPTranslator;

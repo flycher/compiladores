@@ -25,12 +25,12 @@ public class ExpressaoTipo extends Expressao {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[ExpressaoTipos]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print("ExpressaoTipo: " + tipo + "  Valor: " + value);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
         System.out.println("}");
     }

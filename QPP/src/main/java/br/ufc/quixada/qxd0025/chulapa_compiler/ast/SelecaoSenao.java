@@ -17,17 +17,17 @@ public class SelecaoSenao extends TreeNode {
     @Override
     public void printAtDepth(int depth) {
 
-        if(!comandos.isEmpty()) {
-            System.out.print(" ".repeat(depth*2));
+        if (!comandos.isEmpty()) {
+            System.out.print(" ".repeat(depth * 2));
             System.out.println("[Senao]: {");
 
-            System.out.print(" ".repeat(depth*2));
+            System.out.print(" ".repeat(depth * 2));
 
-            for (Comando c: comandos) {
-                c.printAtDepth(depth+1);
+            for (Comando c : comandos) {
+                c.printAtDepth(depth + 1);
             }
 
-            System.out.print(" ".repeat(depth*2));
+            System.out.print(" ".repeat(depth * 2));
             System.out.println("}");
         }
 

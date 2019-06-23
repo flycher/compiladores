@@ -46,19 +46,19 @@ public class DefinicaoFuncao extends Definicao {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Definicão Funçao]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("Nome: " + funcid);
 
-        tipo.printAtDepth(depth+1);
+        tipo.printAtDepth(depth + 1);
 
-        parametrosFormais.printAtDepth(depth+1);
+        parametrosFormais.printAtDepth(depth + 1);
 
-        bloco.printAtDepth(depth+1);
+        bloco.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

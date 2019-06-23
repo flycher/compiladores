@@ -16,11 +16,11 @@ public class MembroVariavel extends Membro {
     @Override
     public void printAtDepth(int depth) {
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Atributos]: {");
-        System.out.print(" ".repeat(depth*2));
-        variavel.printAtDepth(depth+1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
+        variavel.printAtDepth(depth + 1);
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
 
     }

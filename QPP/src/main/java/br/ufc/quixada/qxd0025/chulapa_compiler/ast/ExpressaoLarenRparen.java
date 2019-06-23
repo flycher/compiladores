@@ -12,18 +12,18 @@ public class ExpressaoLarenRparen extends Expressao {
     }
 
     @Override
-    public void printAtDepth(int depth){
-        System.out.print(" ".repeat(depth*2));
+    public void printAtDepth(int depth) {
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[ExpressaoLarenRparen]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print("(");
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print("Expressao:");
         expressao.printAtDepth(depth + 1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print(")");
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
         System.out.println("}");
     }

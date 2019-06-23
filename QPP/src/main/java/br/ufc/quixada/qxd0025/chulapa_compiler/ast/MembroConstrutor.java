@@ -33,16 +33,16 @@ public class MembroConstrutor extends Membro {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Construtor]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        parametrosFormais.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        parametrosFormais.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
-        bloco.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        bloco.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 

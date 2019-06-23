@@ -28,21 +28,21 @@ public class ComandoSelecao extends Comando {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Se]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        expressao.printAtDepth(depth+1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
+        expressao.printAtDepth(depth + 1);
+        System.out.print(" ".repeat(depth * 2));
 
-        for (Comando c: comandos) {
-            c.printAtDepth(depth+1);
+        for (Comando c : comandos) {
+            c.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
-        senao.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        senao.printAtDepth(depth + 1);
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

@@ -25,18 +25,18 @@ public class ExpressaoOperadorBinario extends Expressao {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[ExpressaoOperadorBinario]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print("Expressao:");
         leftExpressao.printAtDepth(depth + 1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print(operadorBinario.getOperador());
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print("Expressao:");
         rightExpressao.printAtDepth(depth + 1);
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
         System.out.println("}");
     }

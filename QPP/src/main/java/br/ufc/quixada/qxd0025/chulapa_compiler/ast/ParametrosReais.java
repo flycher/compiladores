@@ -1,4 +1,3 @@
-
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 import java.util.ArrayList;
@@ -20,17 +19,17 @@ public class ParametrosReais extends TreeNode {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[ParametrosReais]: {");
 
 
-        for(Expressao p : expressoes) {
-            System.out.print(" ".repeat(depth*2));
+        for (Expressao p : expressoes) {
+            System.out.print(" ".repeat(depth * 2));
             System.out.println("Expression Parameters:");
-            p.printAtDepth(depth+1);
+            p.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

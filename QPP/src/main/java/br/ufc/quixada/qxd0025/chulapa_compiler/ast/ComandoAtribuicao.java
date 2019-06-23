@@ -19,17 +19,17 @@ public class ComandoAtribuicao extends Comando {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Atribuição]: {");
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.print(nome);
 
-        System.out.print(" ".repeat(depth*2));
-        expressao.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        expressao.printAtDepth(depth + 1);
 
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 }

@@ -12,19 +12,18 @@ public class TipoNome extends TreeNode {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[TipoNome]: {");
 
-        System.out.print(" ".repeat(depth*4));
+        System.out.print(" ".repeat(depth * 4));
 
-        if(tipoNome != null) {
+        if (tipoNome != null) {
             tipoNome.printAtDepth(depth + 1);
             System.out.print("::" + id);
-        }
-        else
+        } else
             System.out.println(id);
 
-        System.out.print(" ".repeat(depth*3));
+        System.out.print(" ".repeat(depth * 3));
         System.out.println("}");
     }
 }

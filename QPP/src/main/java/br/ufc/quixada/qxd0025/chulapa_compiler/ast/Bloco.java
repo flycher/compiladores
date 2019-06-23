@@ -27,20 +27,20 @@ public class Bloco extends Comando {
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Bloco]: {");
 
-        System.out.print(" ".repeat(depth*2));
-        for (Variavel v: variaveis ) {
-            v.printAtDepth(depth+1);
+        System.out.print(" ".repeat(depth * 2));
+        for (Variavel v : variaveis) {
+            v.printAtDepth(depth + 1);
         }
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
 
-        for (Comando c: comandos) {
-            c.printAtDepth(depth+1);
+        for (Comando c : comandos) {
+            c.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 

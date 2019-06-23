@@ -2,7 +2,7 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 import java.util.ArrayList;
 
-public class ParametrosFormais extends TreeNode{
+public class ParametrosFormais extends TreeNode {
 
     private final ArrayList<Parametro> parametros;
 
@@ -22,15 +22,15 @@ public class ParametrosFormais extends TreeNode{
 
     @Override
     public void printAtDepth(int depth) {
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("[Parametros Formais]: {");
 
-        for(Parametro p : parametros) {
-            System.out.print(" ".repeat(depth*2));
-            p.printAtDepth(depth+1);
+        for (Parametro p : parametros) {
+            System.out.print(" ".repeat(depth * 2));
+            p.printAtDepth(depth + 1);
         }
 
-        System.out.print(" ".repeat(depth*2));
+        System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
     }
 

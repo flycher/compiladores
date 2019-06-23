@@ -6,5 +6,5 @@ public enum OperadorUnarioEnum {
     INCR,
     DECR,
     NOT
-    
+
 }
