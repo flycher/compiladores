@@ -4,11 +4,7 @@ import br.ufc.quixada.qxd0025.chulapa_compiler.ast.*;
 
 import java.util.ArrayList;
 
-public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
-
-    //TODO override vitita ao no
-
-
+public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     @Override
     public Programa visitPrograma(QPPParser.ProgramaContext ctx) {
 
@@ -293,43 +289,87 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitComadoSelecao(QPPParser.ComadoSelecaoContext ctx) {
-        return super.visitComadoSelecao(ctx);
+    public Comando visitComadoSelecao(QPPParser.ComadoSelecaoContext ctx) {
+        Expressao expressao;
+        ArrayList<Comando> comandos = new ArrayList<Comando>();
+        SelecaoSenao selecaoSenao;
+
+        expressao = (Expressao) visit(ctx.selecao().expressao());
+
+        for(QPPParser.ComandoContext e : ctx.selecao().comando()){
+            comandos.add((Comando) visit(e));
+        }
+
+        selecaoSenao = (SelecaoSenao) visit(ctx.selecao().selecao_senao());
+
+        return new ComandoSelecao(expressao, comandos, selecaoSenao);
     }
 
     @Override
-    public TreeNode visitComadoRepeticao(QPPParser.ComadoRepeticaoContext ctx) {
-        return super.visitComadoRepeticao(ctx);
+    public Comando visitComadoRepeticao(QPPParser.ComadoRepeticaoContext ctx) {
+        Expressao expressao;
+        ArrayList<Comando> comandos = new ArrayList<Comando>();
+
+        expressao = (Expressao) visit(ctx.repeticao().expressao());
+
+        for(QPPParser.ComandoContext e : ctx.repeticao().comando()){
+            comandos.add((Comando) visit(e));
+        }
+
+        return new ComandoRepeticao(expressao, comandos);
     }
 
     @Override
-    public TreeNode visitComandoAtribuicao(QPPParser.ComandoAtribuicaoContext ctx) {
-        return super.visitComandoAtribuicao(ctx);
+    public Comando visitComandoAtribuicao(QPPParser.ComandoAtribuicaoContext ctx) {
+        String nome;
+        Expressao expressao;
+
+        nome = ctx.atribuicao().nome().getText();
+
+        expressao = (Expressao) visit(ctx.atribuicao().expressao());
+
+        return new ComandoAtribuicao(nome, expressao);
     }
 
     @Override
-    public TreeNode visitComandoRetorno(QPPParser.ComandoRetornoContext ctx) {
-        return super.visitComandoRetorno(ctx);
+    public Comando visitComandoRetorno(QPPParser.ComandoRetornoContext ctx) {
+        ExpressaoComandoExpressao expressao;
+
+        expressao = (ExpressaoComandoExpressao) visit(ctx.retorno().expressao_comando());
+
+        return new ComandoRetorno(expressao);
     }
 
     @Override
-    public TreeNode visitComandoEntrada(QPPParser.ComandoEntradaContext ctx) {
-        return super.visitComandoEntrada(ctx);
+    public Comando visitComandoEntrada(QPPParser.ComandoEntradaContext ctx) {
+        ArrayList<Nome> nomes = new ArrayList<Nome>();
+
+        for(QPPParser.NomeContext e : ctx.entrada().nome()){
+            nomes.add((Nome) visit(e));
+        }
+
+        return new ComandoEntrada(nomes);
     }
 
     @Override
-    public TreeNode visitComandoSaida(QPPParser.ComandoSaidaContext ctx) {
-        return super.visitComandoSaida(ctx);
+    public Comando visitComandoSaida(QPPParser.ComandoSaidaContext ctx) {
+        ArrayList<Expressao> expressoes = new ArrayList<Expressao>();
+
+        for(QPPParser.ExpressaoContext e : ctx.saida().expressao()){
+            expressoes.add((Expressao) visit(e));
+        }
+
+        return new ComandoSaida(expressoes);
     }
 
     @Override
     public TreeNode visitComandoExpressaoComando(QPPParser.ComandoExpressaoComandoContext ctx) {
-        return super.visitComandoExpressaoComando(ctx);
+        return visit(ctx.expressao_comando());
     }
 
     @Override
-    public TreeNode visitComandoBreak(QPPParser.ComandoBreakContext ctx) {
-        return super.visitComandoBreak(ctx);
+    public ComandoBreak visitComandoBreak(QPPParser.ComandoBreakContext ctx) {
+        return new ComandoBreak(ctx.getStart().getLine());
     }
 
     // END
@@ -339,7 +379,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 //    public TreeNode visitSelecao(QPPParser.SelecaoContext ctx) {
 //        return super.visitSelecao(ctx);
 //    }
-//
+
 //    @Override
 //    public TreeNode visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
 //        return super.visitSelecaoSenao(ctx);
@@ -362,18 +402,30 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 //
 //    @Override
 //    public TreeNode visitRetorno(QPPParser.RetornoContext ctx) {
-//        return super.visitRetorno(ctx);
+//        return new ComandoRetorno((ExpressaoComandoExpressao) visit(ctx.expressao_comando()));
 //    }
-//
-//    @Override
-//    public TreeNode visitEntrada(QPPParser.EntradaContext ctx) {
-//        return super.visitEntrada(ctx);
-//    }
-//
-//    @Override
-//    public TreeNode visitSaida(QPPParser.SaidaContext ctx) {
-//        return super.visitSaida(ctx);
-//    }
+
+    @Override
+    public TreeNode visitEntrada(QPPParser.EntradaContext ctx) {
+        ArrayList<Nome> nomes = new ArrayList<Nome>();
+
+        for(QPPParser.NomeContext e : ctx.nome()){
+            nomes.add((Nome) visit(e));
+        }
+
+        return new ComandoEntrada(nomes);
+    }
+
+    @Override
+    public TreeNode visitSaida(QPPParser.SaidaContext ctx) {
+        ArrayList<Expressao> expressoes = new ArrayList<Expressao>();
+
+        for(QPPParser.ExpressaoContext e : ctx.expressao()){
+            expressoes.add((Expressao) visit(e));
+        }
+
+        return new ComandoSaida(expressoes);
+    }
 
     @Override
     public ComandoExpressaoComando visitExpressaoComandoExpressao(QPPParser.ExpressaoComandoExpressaoContext ctx) {
@@ -559,7 +611,17 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     @Override
     public TreeNode visitNomeListaThisArrow(QPPParser.NomeListaThisArrowContext ctx) {
-        return super.visitNomeListaThisArrow(ctx);
+        NomeLista nomeLista1;
+        ParametrosReais parametrosReais;
+        NomeLista nomeLista2;
+        Nome_Lista_ nome_Lista_;
+
+        nomeLista1 = (NomeLista) visit(ctx.nome_lista(0));
+        parametrosReais = (ParametrosReais) visit(ctx.parametros_reais());
+        nomeLista2 = (NomeLista) visit(ctx.nome_lista(1));
+        nome_Lista_ = (Nome_Lista_) visit(ctx.nome_lista_());
+
+        return new NomeListaThisArrow(nomeLista1, parametrosReais, nomeLista2, nome_Lista_);
     }
 
     @Override

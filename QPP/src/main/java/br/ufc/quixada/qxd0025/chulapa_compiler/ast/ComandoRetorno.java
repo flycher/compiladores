@@ -1,13 +1,13 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
 public class ComandoRetorno extends Comando{
-    private final ComandoExpressaoComando comandoExpressaoComando;
+    private final ExpressaoComandoExpressao comandoExpressaoComando;
 
-    public ComandoRetorno(ComandoExpressaoComando comandoExpressaoComando) {
+    public ComandoRetorno(ExpressaoComandoExpressao comandoExpressaoComando) {
         this.comandoExpressaoComando = comandoExpressaoComando;
     }
 
-    public ComandoExpressaoComando getComandoExpressaoComando() {
+    public ExpressaoComandoExpressao getComandoExpressaoComando() {
         return comandoExpressaoComando;
     }
 
