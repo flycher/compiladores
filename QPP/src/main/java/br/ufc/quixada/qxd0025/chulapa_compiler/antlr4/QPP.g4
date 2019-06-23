@@ -28,6 +28,11 @@ membro
     | STATIC metodo # MembroStaticMetodo
     ;
 
+variavel
+    : tipo ID SEMI # VariavelCriacao
+    | tipo ID atribuicao # VariavelAtribuicao
+    ;
+
 construtor
     : ID LPAREN parametros_formais RPAREN bloco
     ;
