@@ -95,7 +95,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
     @Override
     public MembroVariavel visitMembroVariavel(QPPParser.MembroVariavelContext ctx) {
-        Variavel variavel = (Variavel) visit(ctx.variavel());//ask Xavier if it's correct.
+        Variavel variavel = (Variavel) visit(ctx.variavel());// correct.
         return  new MembroVariavel(variavel);
 
     }
@@ -103,18 +103,31 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     @Override
     public MembroMetodo visitMembroMetodo(QPPParser.MembroMetodoContext ctx) {
         DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
-
-        return new MembroMetodo(definicaoFuncao, QualificadorEnum.CONST);//Ask xavier what to do.
+        QualificadorEnum qualificador;
+        if(ctx.metodo().qualificador().getText() == ""){
+            qualificador = QualificadorEnum.EMPTY;
+        }else {
+            qualificador = QualificadorEnum.CONST;
+        }
+        return new MembroMetodo(definicaoFuncao, qualificador);//correct.
     }
 
     @Override
-    public TreeNode visitMembroStaticVariavel(QPPParser.MembroStaticVariavelContext ctx) {
-        return super.visitMembroStaticVariavel(ctx);
+    public MembroStaticVariavel visitMembroStaticVariavel(QPPParser.MembroStaticVariavelContext ctx) {
+        Variavel variavel = (Variavel) visit(ctx.variavel());// correct.
+        return  new MembroStaticVariavel(variavel);
     }
 
     @Override
-    public TreeNode visitMembroStaticMetodo(QPPParser.MembroStaticMetodoContext ctx) {
-        return super.visitMembroStaticMetodo(ctx);
+    public MembroStaticMetodo visitMembroStaticMetodo(QPPParser.MembroStaticMetodoContext ctx) {
+        DefinicaoFuncao definicaoFuncao = (DefinicaoFuncao) visit(ctx.metodo().funcao_cabecalho());
+        QualificadorEnum qualificador;
+        if(ctx.metodo().qualificador().getText() == ""){
+            qualificador = QualificadorEnum.EMPTY;
+        }else {
+            qualificador = QualificadorEnum.CONST;
+        }
+        return new MembroStaticMetodo(definicaoFuncao, qualificador);//correct.
     }
 //severo_end
 // INICIO lucas
