@@ -1,5 +1,5 @@
 #include<iostream>
 
-int main(char args) {
+int main(const int & a) {
     return 0;
 }
