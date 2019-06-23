@@ -172,10 +172,11 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     @Override
     public ParametrosFormais visitListaParametrosFormais(QPPParser.ListaParametrosFormaisContext ctx) {
 
-        ArrayList<Tipo> parametros = new ArrayList<>();
+        ArrayList<Parametro> parametros = new ArrayList<>();
 
-        for (QPPParser.TipoContext parametro : ctx.tipo()) {
-            parametros.add((Tipo) visit(parametro));
+        int i = 0;
+        for (QPPParser.TipoContext tipo : ctx.tipo()) {
+            parametros.add(new Parametro((Tipo) visit(tipo), ctx.ID().get(0).getSymbol().getText()));
         }
 
         return new ParametrosFormais(parametros);
@@ -427,89 +428,89 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitOperadorBinarioAND(QPPParser.OperadorBinarioANDContext ctx) {
-        return super.visitOperadorBinarioAND(ctx);
+    public OperadorBinario visitOperadorBinarioAND(QPPParser.OperadorBinarioANDContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.AND);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioOR(QPPParser.OperadorBinarioORContext ctx) {
-        return super.visitOperadorBinarioOR(ctx);
+    public OperadorBinario visitOperadorBinarioOR(QPPParser.OperadorBinarioORContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.OR);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioPLUS(QPPParser.OperadorBinarioPLUSContext ctx) {
-        return super.visitOperadorBinarioPLUS(ctx);
+    public OperadorBinario visitOperadorBinarioPLUS(QPPParser.OperadorBinarioPLUSContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.PLUS);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioMINUS(QPPParser.OperadorBinarioMINUSContext ctx) {
-        return super.visitOperadorBinarioMINUS(ctx);
+    public OperadorBinario visitOperadorBinarioMINUS(QPPParser.OperadorBinarioMINUSContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.MINUS);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioTIMES(QPPParser.OperadorBinarioTIMESContext ctx) {
-        return super.visitOperadorBinarioTIMES(ctx);
+    public OperadorBinario visitOperadorBinarioTIMES(QPPParser.OperadorBinarioTIMESContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.TIMES);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioDIV(QPPParser.OperadorBinarioDIVContext ctx) {
-        return super.visitOperadorBinarioDIV(ctx);
+    public OperadorBinario visitOperadorBinarioDIV(QPPParser.OperadorBinarioDIVContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.DIV);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioMOD(QPPParser.OperadorBinarioMODContext ctx) {
-        return super.visitOperadorBinarioMOD(ctx);
+    public OperadorBinario visitOperadorBinarioMOD(QPPParser.OperadorBinarioMODContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.MOD);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioLT(QPPParser.OperadorBinarioLTContext ctx) {
-        return super.visitOperadorBinarioLT(ctx);
+    public OperadorBinario visitOperadorBinarioLT(QPPParser.OperadorBinarioLTContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.LT);
     }
 
     @Override
-    public TreeNode visitOperadorBinarioLEQ(QPPParser.OperadorBinarioLEQContext ctx) {
-        return super.visitOperadorBinarioLEQ(ctx);
+    public OperadorBinario visitOperadorBinarioLEQ(QPPParser.OperadorBinarioLEQContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.LEQ);
     }
 
     @Override
-    public TreeNode visitOperadorGT(QPPParser.OperadorGTContext ctx) {
-        return super.visitOperadorGT(ctx);
+    public OperadorBinario visitOperadorGT(QPPParser.OperadorGTContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.GT);
     }
 
     @Override
-    public TreeNode visitOperadorGEQ(QPPParser.OperadorGEQContext ctx) {
-        return super.visitOperadorGEQ(ctx);
+    public OperadorBinario visitOperadorGEQ(QPPParser.OperadorGEQContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.GEQ);
     }
 
     @Override
-    public TreeNode visitOperadorEQ(QPPParser.OperadorEQContext ctx) {
-        return super.visitOperadorEQ(ctx);
+    public OperadorBinario visitOperadorEQ(QPPParser.OperadorEQContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.EQ);
     }
 
     @Override
-    public TreeNode visitOperadorNEQ(QPPParser.OperadorNEQContext ctx) {
-        return super.visitOperadorNEQ(ctx);
+    public OperadorBinario visitOperadorNEQ(QPPParser.OperadorNEQContext ctx) {
+        return new OperadorBinario(OperadorBinarioEnum.NEQ);
     }
 
     @Override
-    public TreeNode visitOperadorUnarioUNARYMINUS(QPPParser.OperadorUnarioUNARYMINUSContext ctx) {
-        return super.visitOperadorUnarioUNARYMINUS(ctx);
+    public OperadorUnario visitOperadorUnarioUNARYMINUS(QPPParser.OperadorUnarioUNARYMINUSContext ctx) {
+        return new OperadorUnario(OperadorUnarioEnum.MINUS);
 
     }
 
     @Override
-    public TreeNode visitOperadorUnarioINCR(QPPParser.OperadorUnarioINCRContext ctx) {
-        return super.visitOperadorUnarioINCR(ctx);
+    public OperadorUnario visitOperadorUnarioINCR(QPPParser.OperadorUnarioINCRContext ctx) {
+        return new OperadorUnario(OperadorUnarioEnum.INCR);
     }
 
     @Override
-    public TreeNode visitOperadorUnarioDECR(QPPParser.OperadorUnarioDECRContext ctx) {
-        return super.visitOperadorUnarioDECR(ctx);
+    public OperadorUnario visitOperadorUnarioDECR(QPPParser.OperadorUnarioDECRContext ctx) {
+        return new OperadorUnario(OperadorUnarioEnum.DECR);
     }
 
     @Override
-    public TreeNode visitOperadorUnarioNOT(QPPParser.OperadorUnarioNOTContext ctx) {
-        return super.visitOperadorUnarioNOT(ctx);
+    public OperadorUnario visitOperadorUnarioNOT(QPPParser.OperadorUnarioNOTContext ctx) {
+        return new OperadorUnario(OperadorUnarioEnum.NOT);
     }
 
     @Override

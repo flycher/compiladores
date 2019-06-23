@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class ParametrosFormais extends TreeNode{
 
-    private final ArrayList<Tipo> parametros;
+    private final ArrayList<Parametro> parametros;
 
-    public ParametrosFormais(ArrayList<Tipo> parameters) {
+    public ParametrosFormais(ArrayList<Parametro> parameters) {
         this.parametros = parameters;
     }
 
     public ParametrosFormais() {
-        this.parametros = new ArrayList<Tipo>();
+        this.parametros = new ArrayList<Parametro>();
     }
 
 
-    public ArrayList<Tipo> getParametros() {
+    public ArrayList<Parametro> getParametros() {
         return parametros;
     }
 
@@ -25,9 +25,8 @@ public class ParametrosFormais extends TreeNode{
         System.out.print(" ".repeat(depth*2));
         System.out.println("[Parametros Formais]: {");
 
-        for(Tipo p : parametros) {
+        for(Parametro p : parametros) {
             System.out.print(" ".repeat(depth*2));
-            System.out.println("Parâmetros:");
             p.printAtDepth(depth+1);
         }
 
