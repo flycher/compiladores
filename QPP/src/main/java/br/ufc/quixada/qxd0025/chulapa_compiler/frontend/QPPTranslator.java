@@ -150,7 +150,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         DefinicaoFuncao metodo = (DefinicaoFuncao) visit(ctx.funcao_cabecalho()); // CONSERTAR
         QualificadorEnum qualificador;
 
-        if(ctx.qualificador().getText() == ""){
+        if(ctx.qualificador().getText().equals("")){
             qualificador = QualificadorEnum.EMPTY;
         }else {
             qualificador = QualificadorEnum.CONST;
@@ -176,7 +176,8 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
 
         int i = 0;
         for (QPPParser.TipoContext tipo : ctx.tipo()) {
-            parametros.add(new Parametro((Tipo) visit(tipo), ctx.ID().get(0).getSymbol().getText()));
+            parametros.add(new Parametro((Tipo) visit(tipo), ctx.ID().get(i).getSymbol().getText()));
+            i++;
         }
 
         return new ParametrosFormais(parametros);
@@ -313,61 +314,62 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
         return super.visitComandoExpressaoComando(ctx);
     }
 
-    // END
-
     @Override
     public TreeNode visitComandoBreak(QPPParser.ComandoBreakContext ctx) {
         return super.visitComandoBreak(ctx);
     }
 
+    // END
+
+
+//    @Override
+//    public TreeNode visitSelecao(QPPParser.SelecaoContext ctx) {
+//        return super.visitSelecao(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
+//        return super.visitSelecaoSenao(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitSelecaoSenaoVazio(QPPParser.SelecaoSenaoVazioContext ctx) {
+//        return super.visitSelecaoSenaoVazio(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitRepeticao(QPPParser.RepeticaoContext ctx) {
+//        return super.visitRepeticao(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitAtribuicao(QPPParser.AtribuicaoContext ctx) {
+//        return super.visitAtribuicao(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitRetorno(QPPParser.RetornoContext ctx) {
+//        return super.visitRetorno(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitEntrada(QPPParser.EntradaContext ctx) {
+//        return super.visitEntrada(ctx);
+//    }
+//
+//    @Override
+//    public TreeNode visitSaida(QPPParser.SaidaContext ctx) {
+//        return super.visitSaida(ctx);
+//    }
+
     @Override
-    public TreeNode visitSelecao(QPPParser.SelecaoContext ctx) {
-        return super.visitSelecao(ctx);
+    public ComandoExpressaoComando visitExpressaoComandoExpressao(QPPParser.ExpressaoComandoExpressaoContext ctx) {
+        return (ComandoExpressaoComando) visit(ctx.expressao());
     }
 
     @Override
-    public TreeNode visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
-        return super.visitSelecaoSenao(ctx);
-    }
-
-    @Override
-    public TreeNode visitSelecaoSenaoVazio(QPPParser.SelecaoSenaoVazioContext ctx) {
-        return super.visitSelecaoSenaoVazio(ctx);
-    }
-
-    @Override
-    public TreeNode visitRepeticao(QPPParser.RepeticaoContext ctx) {
-        return super.visitRepeticao(ctx);
-    }
-
-    @Override
-    public TreeNode visitAtribuicao(QPPParser.AtribuicaoContext ctx) {
-        return super.visitAtribuicao(ctx);
-    }
-
-    @Override
-    public TreeNode visitRetorno(QPPParser.RetornoContext ctx) {
-        return super.visitRetorno(ctx);
-    }
-
-    @Override
-    public TreeNode visitEntrada(QPPParser.EntradaContext ctx) {
-        return super.visitEntrada(ctx);
-    }
-
-    @Override
-    public TreeNode visitSaida(QPPParser.SaidaContext ctx) {
-        return super.visitSaida(ctx);
-    }
-
-    @Override
-    public TreeNode visitExpressaoComandoExpressao(QPPParser.ExpressaoComandoExpressaoContext ctx) {
-        return super.visitExpressaoComandoExpressao(ctx);
-    }
-
-    @Override
-    public TreeNode visitExpressaoComandoSEMI(QPPParser.ExpressaoComandoSEMIContext ctx) {
-        return super.visitExpressaoComandoSEMI(ctx);
+    public ComandoExpressaoComando visitExpressaoComandoSEMI(QPPParser.ExpressaoComandoSEMIContext ctx) {
+        return new ExpressaoComandoSEMI();
     }
 
     @Override
@@ -376,13 +378,13 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public ExpressaoUnario visitExpressaoUnario(QPPParser.ExpressaoUnarioContext ctx) {
+    public Expressao visitExpressaoUnario(QPPParser.ExpressaoUnarioContext ctx) {
         return new ExpressaoUnario((OperadorUnario) visit(ctx.operador_unario()), (Expressao) visit(ctx.expressao()));
     }
 
     @Override
-    public TreeNode visitExpressaoNome(QPPParser.ExpressaoNomeContext ctx) {
-        return super.visitExpressaoNome(ctx);
+    public Expressao visitExpressaoNome(QPPParser.ExpressaoNomeContext ctx) {
+        return new ExpressaoNome((Nome) visit(ctx.nome()));
     }
 
     @Override
@@ -391,7 +393,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public ExpressaoOperadorBinario visitExpressaoOperadorBinario(QPPParser.ExpressaoOperadorBinarioContext ctx) {
+    public Expressao visitExpressaoOperadorBinario(QPPParser.ExpressaoOperadorBinarioContext ctx) {
         return new ExpressaoOperadorBinario((Expressao) visit(ctx.expressao(0)),
                 (OperadorBinario) visit(ctx.operador_binario()),
                 (Expressao) visit(ctx.expressao(1)));
@@ -413,13 +415,13 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode>{
     }
 
     @Override
-    public TreeNode visitExpressaoLarenRparen(QPPParser.ExpressaoLarenRparenContext ctx) {
-        return super.visitExpressaoLarenRparen(ctx);
+    public Expressao visitExpressaoLarenRparen(QPPParser.ExpressaoLarenRparenContext ctx) {
+        return new ExpressaoLarenRparen(visit(ctx.expressao());
     }
 
     @Override
-    public TreeNode visitExpressaoParametrosReais(QPPParser.ExpressaoParametrosReaisContext ctx) {
-        return super.visitExpressaoParametrosReais(ctx);
+    public Expressao visitExpressaoParametrosReais(QPPParser.ExpressaoParametrosReaisContext ctx) {
+        return new ExpressaoParametrosReais((Nome) visit(ctx.nome()), visit(ctx.parametros_reais()));
     }
 
     @Override

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed30ccb4-d035-4ed3-ac47-ea0d6b6af6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,50 +21,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="717">
+              <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8781#8782#0" expanded="true" />
+                <element signature="e#8928#8929#0" expanded="true" />
+                <element signature="e#10208#10209#0" expanded="true" />
+                <element signature="e#10352#10353#0" expanded="true" />
+                <element signature="e#10805#10806#0" expanded="true" />
+                <element signature="e#10952#10953#0" expanded="true" />
+                <element signature="e#11093#11094#0" expanded="true" />
+                <element signature="e#11408#11409#0" expanded="true" />
+                <element signature="e#12952#12953#0" expanded="true" />
+                <element signature="e#13005#13006#0" expanded="true" />
+                <element signature="e#14076#14077#0" expanded="true" />
+                <element signature="e#14220#14221#0" expanded="true" />
+                <element signature="e#14367#14368#0" expanded="true" />
+                <element signature="e#14911#14912#0" expanded="true" />
+                <element signature="e#17976#17977#0" expanded="true" />
+                <element signature="e#18120#18121#0" expanded="true" />
+                <element signature="e#18264#18265#0" expanded="true" />
+                <element signature="e#18411#18412#0" expanded="true" />
+                <element signature="e#18864#18865#0" expanded="true" />
+                <element signature="e#19161#19162#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoNome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="364" column="55" selection-start-line="364" selection-start-column="55" selection-end-line="364" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#8759#8760#0" expanded="true" />
-                <element signature="e#8906#8907#0" expanded="true" />
-                <element signature="e#10186#10187#0" expanded="true" />
-                <element signature="e#10330#10331#0" expanded="true" />
-                <element signature="e#10783#10784#0" expanded="true" />
-                <element signature="e#10930#10931#0" expanded="true" />
-                <element signature="e#11071#11072#0" expanded="true" />
-                <element signature="e#11398#11399#0" expanded="true" />
-                <element signature="e#11524#11525#0" expanded="true" />
-                <element signature="e#11665#11666#0" expanded="true" />
-                <element signature="e#11953#11954#0" expanded="true" />
-                <element signature="e#12088#12089#0" expanded="true" />
-                <element signature="e#12214#12215#0" expanded="true" />
-                <element signature="e#12340#12341#0" expanded="true" />
-                <element signature="e#12460#12461#0" expanded="true" />
-                <element signature="e#12952#12953#0" expanded="true" />
-                <element signature="e#13324#13325#0" expanded="true" />
-                <element signature="e#13954#13955#0" expanded="true" />
-                <element signature="e#14098#14099#0" expanded="true" />
-                <element signature="e#14245#14246#0" expanded="true" />
-                <element signature="e#14731#14732#0" expanded="true" />
-                <element signature="e#17796#17797#0" expanded="true" />
-                <element signature="e#17940#17941#0" expanded="true" />
-                <element signature="e#18084#18085#0" expanded="true" />
-                <element signature="e#18231#18232#0" expanded="true" />
-                <element signature="e#18684#18685#0" expanded="true" />
-                <element signature="e#18981#18982#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="40">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -79,7 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>â</find>
       <find>variavel_atribuicao</find>
       <find>lista_comandos</find>
       <find>lista_declaracoes_locais</find>
@@ -109,6 +111,7 @@
       <find>MembroCons</find>
       <find>ParametrosFormais</find>
       <find>variavel</find>
+      <find>Nome</find>
     </findStrings>
     <replaceStrings>
       <replace>Vazio</replace>
@@ -158,8 +161,9 @@
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Comando.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosFormais.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Parametro.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" />
+        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" />
       </list>
     </option>
   </component>
@@ -339,12 +343,12 @@
       <workItem from="1561200274439" duration="4106000" />
       <workItem from="1561206373937" duration="25893000" />
       <workItem from="1561238240252" duration="44000" />
-      <workItem from="1561306568434" duration="2334000" />
+      <workItem from="1561306568434" duration="4302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55911000" />
+    <option name="totallyTimeSpent" value="57879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -441,16 +445,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/test/Test.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/test.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/symbols/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -542,30 +536,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Expressao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DecoradorEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/SelecaoSenao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Bloco.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
@@ -854,47 +821,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoExpressao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="364" column="55" selection-start-line="364" selection-start-column="55" selection-end-line="364" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8759#8760#0" expanded="true" />
-            <element signature="e#8906#8907#0" expanded="true" />
-            <element signature="e#10186#10187#0" expanded="true" />
-            <element signature="e#10330#10331#0" expanded="true" />
-            <element signature="e#10783#10784#0" expanded="true" />
-            <element signature="e#10930#10931#0" expanded="true" />
-            <element signature="e#11071#11072#0" expanded="true" />
-            <element signature="e#11398#11399#0" expanded="true" />
-            <element signature="e#11524#11525#0" expanded="true" />
-            <element signature="e#11665#11666#0" expanded="true" />
-            <element signature="e#11953#11954#0" expanded="true" />
-            <element signature="e#12088#12089#0" expanded="true" />
-            <element signature="e#12214#12215#0" expanded="true" />
-            <element signature="e#12340#12341#0" expanded="true" />
-            <element signature="e#12460#12461#0" expanded="true" />
-            <element signature="e#12952#12953#0" expanded="true" />
-            <element signature="e#13324#13325#0" expanded="true" />
-            <element signature="e#13954#13955#0" expanded="true" />
-            <element signature="e#14098#14099#0" expanded="true" />
-            <element signature="e#14245#14246#0" expanded="true" />
-            <element signature="e#14731#14732#0" expanded="true" />
-            <element signature="e#17796#17797#0" expanded="true" />
-            <element signature="e#17940#17941#0" expanded="true" />
-            <element signature="e#18084#18085#0" expanded="true" />
-            <element signature="e#18231#18232#0" expanded="true" />
-            <element signature="e#18684#18685#0" expanded="true" />
-            <element signature="e#18981#18982#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoComandoSEMI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Expressao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoLarenRparen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoParametrosReais.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/SelecaoSenao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoEntrada.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="717">
+          <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoNome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8781#8782#0" expanded="true" />
+            <element signature="e#8928#8929#0" expanded="true" />
+            <element signature="e#10208#10209#0" expanded="true" />
+            <element signature="e#10352#10353#0" expanded="true" />
+            <element signature="e#10805#10806#0" expanded="true" />
+            <element signature="e#10952#10953#0" expanded="true" />
+            <element signature="e#11093#11094#0" expanded="true" />
+            <element signature="e#11408#11409#0" expanded="true" />
+            <element signature="e#12952#12953#0" expanded="true" />
+            <element signature="e#13005#13006#0" expanded="true" />
+            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="e#14220#14221#0" expanded="true" />
+            <element signature="e#14367#14368#0" expanded="true" />
+            <element signature="e#14911#14912#0" expanded="true" />
+            <element signature="e#17976#17977#0" expanded="true" />
+            <element signature="e#18120#18121#0" expanded="true" />
+            <element signature="e#18264#18265#0" expanded="true" />
+            <element signature="e#18411#18412#0" expanded="true" />
+            <element signature="e#18864#18865#0" expanded="true" />
+            <element signature="e#19161#19162#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
