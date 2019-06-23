@@ -179,7 +179,7 @@ nome_lista
     ;
 
 nome_lista_
-    : LPAREN parametros_reais RPAREN DOT nome_lista nome_lista_ # NomeListaLPAREN
+    : LPAREN parametros_reais RPAREN DOT nome_lista  # NomeListaLPAREN
     | # NomeListaEmpty
     ;
 

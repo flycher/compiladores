@@ -2,12 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed30ccb4-d035-4ed3-ac47-ea0d6b6af6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaEmpty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome_Lista_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDBLCOL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDBLCOL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDOT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDOT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Tipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaLPAREN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaLPAREN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoAtribuicao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoBreak.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoEntrada.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoExpressaoComando.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRepeticao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoRetorno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSaida.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ComandoSelecao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/DefinicaoFuncao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoNome.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoParametrosReais.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/Nome.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeID.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDBLCOL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaLPAREN.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaThisArrow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeNomeLista.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeThisArrow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosFormais.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ParametrosReais.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/ast/SelecaoSenao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/main/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="573" lean-forward="true" selection-start-line="573" selection-end-line="573" />
+            <state relative-caret-position="458">
+              <caret line="558" lean-forward="true" selection-start-line="558" selection-end-line="558" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#10727#10728#0" expanded="true" />
@@ -53,11 +76,18 @@
                 <element signature="e#11658#11659#0" expanded="true" />
                 <element signature="e#11922#11923#0" expanded="true" />
                 <element signature="e#11973#11974#0" expanded="true" />
-                <element signature="e#19379#19380#0" expanded="true" />
-                <element signature="e#19429#19430#0" expanded="true" />
-                <element signature="e#19673#19674#0" expanded="true" />
-                <element signature="e#19726#19727#0" expanded="true" />
+                <element signature="e#21121#21122#0" expanded="true" />
+                <element signature="e#21164#21165#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -156,10 +186,10 @@
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/TipoNome.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/ExpressaoTipo.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/antlr4/QPP.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDBLCOL.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeListaIDDOT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java" />
       </list>
     </option>
   </component>
@@ -339,12 +369,12 @@
       <workItem from="1561200274439" duration="4106000" />
       <workItem from="1561206373937" duration="25893000" />
       <workItem from="1561238240252" duration="44000" />
-      <workItem from="1561306568434" duration="8311000" />
+      <workItem from="1561306568434" duration="8413000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61888000" />
+    <option name="totallyTimeSpent" value="61990000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,13 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -859,8 +882,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/frontend/QPPTranslator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="573" lean-forward="true" selection-start-line="573" selection-end-line="573" />
+        <state relative-caret-position="458">
+          <caret line="558" lean-forward="true" selection-start-line="558" selection-end-line="558" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#10727#10728#0" expanded="true" />
@@ -875,11 +898,16 @@
             <element signature="e#11658#11659#0" expanded="true" />
             <element signature="e#11922#11923#0" expanded="true" />
             <element signature="e#11973#11974#0" expanded="true" />
-            <element signature="e#19379#19380#0" expanded="true" />
-            <element signature="e#19429#19430#0" expanded="true" />
-            <element signature="e#19673#19674#0" expanded="true" />
-            <element signature="e#19726#19727#0" expanded="true" />
+            <element signature="e#21121#21122#0" expanded="true" />
+            <element signature="e#21164#21165#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/ufc/quixada/qxd0025/chulapa_compiler/ast/NomeLista.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
