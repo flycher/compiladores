@@ -126,12 +126,10 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
         return new MembroStaticMetodo(definicaoFuncao, qualificador);
     }
 
-// INICIO lucas
-
     @Override
     public VariavelCriacao visitVariavelCriacao(QPPParser.VariavelCriacaoContext ctx) {
         Tipo t = (Tipo) visit(ctx.tipo());
-        String id = ctx.ID().getSymbol().getText();
+        String id = ctx.ID().getText();
 
         return new VariavelCriacao(t, id, ctx.getStart().getLine());
     }
@@ -372,22 +370,26 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
         return new ComandoBreak(ctx.getStart().getLine());
     }
 
-    // END
+    @Override
+    public SelecaoSenao visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
+        ArrayList<Comando> comandos = new ArrayList<>();
 
+        for(QPPParser.ComandoContext comando: ctx.comando()) {
+            comandos.add((Comando) visit(comando));
+        }
+
+        return new SelecaoSenao(comandos);
+    }
+
+    @Override
+    public SelecaoSenao visitSelecaoSenaoVazio(QPPParser.SelecaoSenaoVazioContext ctx) {
+        return new SelecaoSenao();
+    }
 
 //    @Override
 //    public TreeNode visitSelecao(QPPParser.SelecaoContext ctx) {
 //        return super.visitSelecao(ctx);
-//    }
 
-//    @Override
-//    public TreeNode visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
-//        return super.visitSelecaoSenao(ctx);
-//    }
-//
-//    @Override
-//    public TreeNode visitSelecaoSenaoVazio(QPPParser.SelecaoSenaoVazioContext ctx) {
-//        return super.visitSelecaoSenaoVazio(ctx);
 //    }
 //
 //    @Override
@@ -429,7 +431,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
 
     @Override
     public ComandoExpressaoComando visitExpressaoComandoExpressao(QPPParser.ExpressaoComandoExpressaoContext ctx) {
-        return (ComandoExpressaoComando) visit(ctx.expressao());
+        return new ExpressaoComandoExpressao((Expressao) visit(ctx.expressao()));
     }
 
     @Override
@@ -627,7 +629,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     @Override
     public NomeLista visitNomeListaID(QPPParser.NomeListaIDContext ctx) {
         String id = ctx.ID().getSymbol().getText();
-        Nome_Lista_ nomeListaLPAREN = (NomeListaLPAREN) visit(ctx.nome_lista_());
+        Nome_Lista_ nomeListaLPAREN = (Nome_Lista_) visit(ctx.nome_lista_());
         return new NomeListaID(id, nomeListaLPAREN);
     }
 

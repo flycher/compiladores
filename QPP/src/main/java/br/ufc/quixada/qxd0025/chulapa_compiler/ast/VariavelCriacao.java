@@ -30,7 +30,8 @@ public class VariavelCriacao extends Variavel {
         System.out.println("[DeclaracaoVariavel ]: {");
 
         System.out.print(" ".repeat(depth * 2));
-        System.out.println("Name: " + varid + "     Type: " + tipo);
+        System.out.println("Name: " + varid);
+        tipo.printAtDepth(depth+1);
 
         System.out.print(" ".repeat(depth * 2));
         System.out.println("}");

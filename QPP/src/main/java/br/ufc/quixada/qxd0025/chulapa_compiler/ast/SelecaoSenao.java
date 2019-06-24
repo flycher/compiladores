@@ -10,6 +10,10 @@ public class SelecaoSenao extends TreeNode {
         this.comandos = comandos;
     }
 
+    public SelecaoSenao() {
+        this.comandos = new ArrayList<>();
+    }
+
     public ArrayList<Comando> getComandos() {
         return comandos;
     }

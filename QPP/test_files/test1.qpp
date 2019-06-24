@@ -8,13 +8,22 @@ struct test {
 float foo() {
     float b;
     b = 1.1;
-    //return b;
+    return b;
 }
 
 int main(int a) {
     /*nskfsmkfmskmf*/
     int c;
     c = 2;
+
+    if(true){
+        while(c == 2)
+        {
+            ++c;
+        }
+    } else {
+        c = 1;
+    }
 
     return c * foo();
 }

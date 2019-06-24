@@ -9,11 +9,11 @@ public class SymbolTable {
     private Map<Symbol, List<Symbol>> functions = new HashMap<>();
     private long lastResult = 0;
 
-    public Optional<SymbolType> getSymbolType(Symbol s) {
+    public Optional<SymbolCategoty> getSymbolType(Symbol s) {
         if (variables.contains(s)) {
-            return Optional.of(SymbolType.VARIABLE);
+            return Optional.of(SymbolCategoty.VARIABLE);
         } else if (functions.containsKey(s)) {
-            return Optional.of(SymbolType.FUNCTION);
+            return Optional.of(SymbolCategoty.FUNCTION);
         } else {
             return Optional.empty();
         }
