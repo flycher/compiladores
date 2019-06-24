@@ -374,7 +374,7 @@ public class QPPTranslator extends QPPBaseVisitor<TreeNode> {
     public SelecaoSenao visitSelecaoSenao(QPPParser.SelecaoSenaoContext ctx) {
         ArrayList<Comando> comandos = new ArrayList<>();
 
-        for(QPPParser.ComandoContext comando: ctx.comando()) {
+        for (QPPParser.ComandoContext comando : ctx.comando()) {
             comandos.add((Comando) visit(comando));
         }
 

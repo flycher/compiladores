@@ -1,66 +1,110 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.symbols;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SymbolTable {
 
-    //TODO implementar reconhecimento de todos os tipos
-    private Set<Symbol> variables = new HashSet<>();
-    private Map<Symbol, List<Symbol>> functions = new HashMap<>();
+    private Map<String, Symbol> simbolos;
+    private SymbolTable pai;
     private long lastResult = 0;
 
-    public Optional<SymbolCategoty> getSymbolType(Symbol s) {
-        if (variables.contains(s)) {
-            return Optional.of(SymbolCategoty.VARIABLE);
-        } else if (functions.containsKey(s)) {
-            return Optional.of(SymbolCategoty.FUNCTION);
-        } else {
-            return Optional.empty();
-        }
+    public SymbolTable() {
+        simbolos = new HashMap<>();
+        pai = null;
     }
 
-    public boolean ensureIsVariable(Symbol v) {
-        if (!functions.containsKey(v)) {
-            variables.add(v);
+    public SymbolTable(SymbolTable p) {
+        simbolos = new HashMap<>();
+        pai = null;
+        this.pai = p;
+    }
 
+
+    public boolean addSymbol(Symbol s, ErroSemantico erro) {
+        String id = s.getId();
+        if (!simbolos.containsKey(id)) {
+            simbolos.put(id, s);
+            System.err.println("Adicionado " + id);
             return true;
         }
 
-        return false;
-    }
+        Symbol other = simbolos.get(id);
+        if (s.getCategory() == SymbolCategory.ATRIBUTE || s.getCategory() == SymbolCategory.VARIABLE ||
+                other.getCategory() == SymbolCategory.ATRIBUTE || other.getCategory() == SymbolCategory.VARIABLE) {
+            erro.setMensagem("Id [" + s.getId() + "] ja esta sendo usado (l." + other.getLinha() + ")");
+            return false;
+        }
 
-    public void newResult() {
-        ++this.lastResult;
-    }
-
-    public boolean ensureIsNewFunction(Symbol f, ArrayList<Symbol> parameters) {
-        if (!(variables.contains(f) || functions.containsKey(f))) {
-            functions.put(f, parameters);
-
+        Assinatura novoP = s.getParametros().get(0);
+        if (other.addParametros(novoP, erro)) {
             return true;
-        }
-
-        return false;
-    }
-
-    public int countFunctionArguments(Symbol f) {
-        if (!functions.containsKey(f)) {
-            return -1;
         } else {
-            return functions.get(f).size();
+            erro.setMensagem("Ja existe funcao/metodo com o id [" + id + "] e com a mesma assinatura (l." + other.getLinha() + ")");
+            return false;
         }
     }
 
-    public boolean containsVariable(Symbol v) {
-        return variables.contains(v);
+
+    public Symbol getSymbol(String id, ErroSemantico erro) {
+        if (!simbolos.containsKey(id)) {
+            erro.setMensagem("simbolo Id [" + id + "] nao encontrado");
+            return null;
+        } else {
+            return simbolos.get(id);
+        }
     }
 
-    public boolean containsResult(long result) {
-        return result <= this.lastResult;
+    public Symbol getSymbolFunc(String id, Assinatura parametros, SymbolCategory categoria, ErroSemantico erro) {
+        if (!simbolos.containsKey(id)) {
+            erro.setMensagem("comando [" + id + "] nao encontrado");
+            return null;
+        } else {
+            Symbol s = simbolos.get(id);
+            if (s.getCategory() == SymbolCategory.ATRIBUTE || s.getCategory() == SymbolCategory.VARIABLE) {
+                erro.setMensagem("comando [" + id + "] nao e uma funcao/metodo");
+                return null;
+            }
+            if (!s.buscaParametros(parametros)) {
+                erro.setMensagem("comando [" + id + "] nao possui a assinatura T:" + parametros);
+                return null;
+            }
+            Symbol s2 = new Symbol(s, parametros);
+            return s2;
+        }
     }
 
-    public boolean containsFunction(Symbol f) {
-        return functions.containsKey(f);
+    public Symbol getSymbolVar(String id, Assinatura parametros, SymbolCategory categoria, ErroSemantico erro) {
+        if (!simbolos.containsKey(id)) {
+            erro.setMensagem("comando [" + id + "] nao encontrado");
+            return null;
+        } else {
+            Symbol s = simbolos.get(id);
+            if (s.getCategory() == SymbolCategory.FUNCTION || s.getCategory() == SymbolCategory.METOD) {
+                erro.setMensagem("var [" + id + "] nao e uma variavel/atributo");
+                return null;
+            }
+
+            Symbol s2 = new Symbol(s);
+            return s2;
+        }
     }
+
+    public Symbol getSymbol(String id, SymbolCategory categoria, ErroSemantico erro) {
+        if (!simbolos.containsKey(id)) {
+            erro.setMensagem("simbolo id[" + id + "] n ecsiste!");
+            return null;//simbolo n existe
+        } else {
+            Symbol s = simbolos.get(id);
+
+            if (s.getCategory() == categoria) return s;
+            else return null;
+        }
+    }
+
+    public SymbolTable getPai() {
+        return pai;
+    }
+
 
 }

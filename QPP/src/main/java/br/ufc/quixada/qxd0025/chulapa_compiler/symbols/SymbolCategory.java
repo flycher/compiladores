@@ -1,6 +1,6 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.symbols;
 
-public enum SymbolCategoty {
+public enum SymbolCategory {
 
     //TODO enumerar todos os tipos
 

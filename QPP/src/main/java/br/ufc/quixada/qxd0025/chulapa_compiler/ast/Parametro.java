@@ -1,6 +1,6 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler.ast;
 
-public class Parametro extends TreeNode {
+public class Parametro extends Variavel {
 
     private Tipo tipo;
     private String id;

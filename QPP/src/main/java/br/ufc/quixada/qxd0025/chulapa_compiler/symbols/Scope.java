@@ -3,7 +3,7 @@ package br.ufc.quixada.qxd0025.chulapa_compiler.symbols;
 import java.util.*;
 
 public class Scope implements Iterable<Scope> {
-    private Map<Symbol, SymbolCategoty> declaredSymbols = new HashMap<>();
+    private Map<Symbol, SymbolCategory> declaredSymbols = new HashMap<>();
     private List<Scope> nestedScopes = new ArrayList<>();
 
     private Scope parent;
@@ -12,7 +12,7 @@ public class Scope implements Iterable<Scope> {
         this.parent = parent;
     }
 
-    public boolean bind(Symbol s, SymbolCategoty t) {
+    public boolean bind(Symbol s, SymbolCategory t) {
         return declaredSymbols.putIfAbsent(s, t) == null;
     }
 
@@ -20,7 +20,7 @@ public class Scope implements Iterable<Scope> {
         return declaredSymbols.containsKey(s);
     }
 
-    public Optional<SymbolCategoty> getBinding(Symbol s) {
+    public Optional<SymbolCategory> getBinding(Symbol s) {
         return Optional.ofNullable(declaredSymbols.get(s));
     }
 

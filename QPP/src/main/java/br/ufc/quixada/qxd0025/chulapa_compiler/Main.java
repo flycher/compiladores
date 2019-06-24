@@ -4,6 +4,7 @@ import br.ufc.quixada.qxd0025.chulapa_compiler.ast.Programa;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPLexer;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPParser;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPTranslator;
+import br.ufc.quixada.qxd0025.chulapa_compiler.symbols.QPPChecker;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -29,9 +30,11 @@ public class Main {
 
             System.out.println("Tradução AST executada.");
 
-//            QPPChecker checker = new QPPChecker(prog);
-//            SymbolTable symbols = checker.check();
-//            System.out.println("Tabela de simbolos criada.");
+            QPPChecker checker = new QPPChecker(programa);
+            if (checker.check()) {
+                System.out.println("Tabela de simbolos criada.");
+                checker.mostrarErros();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

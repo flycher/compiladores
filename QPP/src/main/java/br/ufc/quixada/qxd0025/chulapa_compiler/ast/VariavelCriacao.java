@@ -31,7 +31,7 @@ public class VariavelCriacao extends Variavel {
 
         System.out.print(" ".repeat(depth * 2));
         System.out.println("Name: " + varid);
-        tipo.printAtDepth(depth+1);
+        tipo.printAtDepth(depth + 1);
 
         System.out.print(" ".repeat(depth * 2));
         System.out.println("}");
