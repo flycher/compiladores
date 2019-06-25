@@ -22,7 +22,7 @@ public class NomeListaID extends NomeLista {
     public void printAtDepth(int depth) {
 
         System.out.print(" ".repeat(depth * 2));
-        System.out.print("[NomeListaIDDOT]: {");
+        System.out.print("[NomeListaID]: {");
 
         System.out.print(" ".repeat(depth * 2));
         System.out.print("ID: " + id);

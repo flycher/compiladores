@@ -1,6 +1,7 @@
 package br.ufc.quixada.qxd0025.chulapa_compiler;
 
 import br.ufc.quixada.qxd0025.chulapa_compiler.ast.Programa;
+import br.ufc.quixada.qxd0025.chulapa_compiler.backend.IntermediateCode;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPLexer;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPParser;
 import br.ufc.quixada.qxd0025.chulapa_compiler.frontend.QPPTranslator;
@@ -17,7 +18,7 @@ public class Main {
 
         try {
 
-            QPPLexer lexer = new QPPLexer(CharStreams.fromFileName("/home/flycher/Dropbox/VScode/compiladores/QPP/test_files/test1.qpp"));
+            QPPLexer lexer = new QPPLexer(CharStreams.fromFileName("/home/flycher/Dropbox/VScode/compiladores/QPP/test_files/malan1.qpp"));
             QPPParser parser = new QPPParser(new CommonTokenStream(lexer));
 
             QPPParser.ProgramaContext ctx = parser.programa();
@@ -35,6 +36,11 @@ public class Main {
                 System.out.println("Tabela de simbolos criada.");
                 checker.mostrarErros();
             }
+
+            IntermediateCode backend = new IntermediateCode(checker.getSymbolTable());
+
+            System.out.println("Código Intermediário:\n");
+            System.out.println(backend.gerar(programa));
 
         } catch (IOException e) {
             e.printStackTrace();

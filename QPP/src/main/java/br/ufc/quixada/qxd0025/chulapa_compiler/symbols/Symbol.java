@@ -7,8 +7,11 @@ import java.util.ArrayList;
 public class Symbol {
 
     private final String id;
-    private final int linha;
+
     private Tipo tipo;
+    private final int linha;
+
+
     private SymbolCategory category;
     private ArrayList<Assinatura> parametros;
 
@@ -20,36 +23,44 @@ public class Symbol {
         this.parametros = new ArrayList<>();
     }
 
-    public Symbol(Symbol symbol, Assinatura parametros) {
+    public Symbol(Symbol symbol, Assinatura parametros){
         this.id = symbol.getId();
         this.linha = symbol.getLinha();
         this.parametros.add(parametros);
         this.tipo = symbol.getTipo();
     }
 
-    public Symbol(Symbol symbol) {
+    public Symbol(Symbol symbol){
         this.id = symbol.getId();
         this.linha = symbol.getLinha();
         this.parametros = new ArrayList<>();
         this.tipo = symbol.getTipo();
     }
 
-    public Symbol(String id, Tipo tipo, int linha) {
+    public Symbol(String id, Tipo tipo, int linha){
         this.id = id;
         this.linha = linha;
         this.parametros = new ArrayList<>();
         this.tipo = tipo;
     }
 
-    public Symbol(VariavelAtribuicao variavelAtribuicao) {
-        this.id = variavelAtribuicao.getVarid().intern();
+    public Symbol(VariavelAtribuicao variavelAtribuicao){
+        this.id = variavelAtribuicao.getVarid();
         this.tipo = variavelAtribuicao.getTipo();
         this.parametros = new ArrayList<>();
         this.category = SymbolCategory.ATRIBUTE;
         this.linha = variavelAtribuicao.getLinha();
     }
 
-    public Symbol(DefinicaoFuncao definicaoFuncao) {
+    public Symbol(VariavelCriacao variavelCriacao){
+        this.id = variavelCriacao.getVarid();
+        this.tipo = variavelCriacao.getTipo();
+        this.parametros = new ArrayList<>();
+        this.category = SymbolCategory.ATRIBUTE;
+        this.linha = variavelCriacao.getLinha();
+    }
+
+    public Symbol(DefinicaoFuncao definicaoFuncao){
         this.id = definicaoFuncao.getFuncid().intern();
         this.tipo = definicaoFuncao.getTipo();
         this.parametros = new ArrayList<>();
@@ -85,10 +96,10 @@ public class Symbol {
         return parametros;
     }
 
-    public boolean addParametros(Assinatura novosParametros, ErroSemantico erroSemantico) {
-        for (Assinatura p : parametros) {
-            if (p.equals(parametros)) {
-                erroSemantico.setMensagem("Assinatura ja utilizada para o ID [" + this.getId() + "]");
+    public boolean addParametros(Assinatura novosParametros, ErroSemantico erroSemantico){
+        for(Assinatura p : parametros){
+            if(p.equals(parametros)){
+                erroSemantico.setMensagem("Assinatura ja utilizada para o ID ["+this.getId()+"]");
                 return false;
             }
         }
@@ -96,9 +107,9 @@ public class Symbol {
         return true;
     }
 
-    public boolean buscaParametros(Assinatura outrosParametros) {
-        for (Assinatura p : parametros) {
-            if (p.equals(outrosParametros)) {
+    public boolean buscaParametros(Assinatura outrosParametros){
+        for(Assinatura p : parametros){
+            if(p.equals(outrosParametros)){
                 return true;
             }
         }

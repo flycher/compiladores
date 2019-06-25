@@ -22,4 +22,36 @@ public class OperadorBinario extends TreeNode {
 
         System.out.print("}");
     }
+
+    public String toString(){
+        switch(operador){
+            case AND:
+                return "&&";
+            case OR:
+                return "||";
+            case PLUS:
+                return "+";
+            case MINUS:
+                return "-";
+            case TIMES:
+                return "*";
+            case DIV:
+                return "/";
+            case  MOD:
+                return "%";
+            case LT:
+                return "<";
+            case LEQ:
+                return "<=";
+            case GT:
+                return ">";
+            case GEQ:
+                return ">=";
+            case EQ:
+                return "==";
+            case NEQ:
+                return "!=";
+        }
+        return "";
+    }
 }

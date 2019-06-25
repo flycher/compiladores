@@ -1,0 +1,9 @@
+int main(){
+   // Codigo massa
+   int aprova;
+   int dado;
+   a = 0;
+   c = 2 + 1;
+   b = a * c;
+   return 0;
+}

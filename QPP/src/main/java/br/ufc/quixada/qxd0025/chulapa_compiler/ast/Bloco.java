@@ -32,7 +32,8 @@ public class Bloco extends Comando {
 
         System.out.print(" ".repeat(depth * 2));
         for (Variavel v : variaveis) {
-            v.printAtDepth(depth + 1);
+            if(v != null)
+                v.printAtDepth(depth + 1);
         }
         System.out.print(" ".repeat(depth * 2));
 

@@ -35,11 +35,9 @@ public class QPPChecker {
 
     private void check(Definicao definicao, SymbolTable symbolTable) {
         if (definicao instanceof DefinicaoFuncao)
-            check(definicao, symbolTable);
+            check((DefinicaoFuncao) definicao, symbolTable);
         else if (definicao instanceof DefinicaoEstrutura)
-            check(definicao, symbolTable);
-        else
-            return;
+            check((DefinicaoEstrutura)definicao, symbolTable);
     }
 
     private void check(DefinicaoFuncao definicaoFuncao, SymbolTable symbolTable) {
@@ -86,23 +84,6 @@ public class QPPChecker {
     }
 
     private void check(Variavel variavel, SymbolTable symbolTable) {
-        Symbol symbol = new Symbol((Parametro) variavel);
-        ErroSemantico erro = new ErroSemantico(-1);
-        if (!symbolTable.addSymbol(symbol, erro)) {
-            errosSemanticos.add(erro);
-        }
-
-        SemanticaExpressao expressao = new SemanticaExpressao();
-
-        if (((VariavelAtribuicao) variavel).getAtribuicao().getExpressao() != null) {
-            check(((VariavelAtribuicao) variavel).getAtribuicao().getExpressao(), symbolTable, expressao);
-
-            if (((VariavelAtribuicao) variavel).getTipo().equals(expressao.getTipoRetornado())) {
-                errosSemanticos.add(new ErroSemantico(((VariavelAtribuicao) variavel).getLinha(),
-                        "Tipo {" + symbol.getId() + "} esperado," +
-                                "Tipo {" + expressao.getTipoRetornado() + "} recebido"));
-            }
-        }
 
     }
 
@@ -199,7 +180,6 @@ public class QPPChecker {
         if (nome instanceof NomeThisArrow) check((NomeThisArrow) nome, symbolTable, info);
         if (nome instanceof NomeNomeLista) check((NomeNomeLista) nome, symbolTable, info);
     }
-
 
     public String mostrarErros() {
         String erros = "Lista de erros:\n";
